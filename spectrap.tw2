@@ -38,10 +38,10 @@ The Spectrap
 
 ]{
   You are standing in the cellar.
-  The [[grey door]] by which you entered lies locked to the south.
-  A mural of a [[$colour door->Magic Door]] has, it seems, been
-  (if: $colour is "white")[painted on](else:)[carved into]
-  the north wall.
+  The [[grey door]]
+  (unless: (history:) contains "cellar")[by which you entered]
+  lies locked to the south.
+  To the north is an odd-looking [[$colour door]].
 }
 
 {
@@ -89,11 +89,16 @@ The Spectrap
   ]
 }
 
-](unless: $projectorIsOn)[The projector is currently switched off, but there is a (link: "switch on the side")[(set: $projectorIsOn to true)(go-to: "projector")].](else:)[The projector is currently switched on and humming with power. There is a (link: "switch on the side")[(set: $projectorIsOn to false)(go-to: "projector")].
+(unless: $projectorIsOn)[The projector is currently switched off,\
+  but there is a (link: "switch on the side")[(set: $projectorIsOn to true)(go-to: "projector")].
 
-The light from the projector is shining on the door mural on the north wall of the [[cellar]], (unless: $colour is "white")[turning it a brilliant shade of $colour and ]making it scintillate and sparkle.]
+  To the north is odd-looking [[white door]].\
+](else:)[The projector is currently switched on and humming with power.\
+  The light from the projector is shining north on the [[odd-looking door->$colour door]],\
+  (unless: $colour is "white")[turning it a brilliant shade of **$colour** and]\
+  making it scintillate and sparkle.]
 
-Behind you is the [[cupboard]], to the south is the [[grey door]], and to the north the mural of a [[$colour door->Magic Door]].
+Behind you is the [[cupboard]] and to the south is the [[grey door]].
 
 ::two slots
 (unless: (history:) contains "two slots")[(set: $firstSlide to true)]\
@@ -148,16 +153,25 @@ Behind you is the [[cupboard]], to the south is the [[grey door]], and to the no
 ]
 
 ::cupboard <1050,300>
-(unless: (history:) contains "cupboard")[(set: $hasBlue to false)]The cupboard takes up most of one wall of the [[cellar]]. From the pattern of dust and scratches inside, it looks it was emptied recently, and in a hurry too.
+{
+  (unless: (history:) contains "cupboard")[(set: $hasBlue to false)]
+  The cupboard takes up most of one wall of the cellar.
+  From the pattern of dust and scratches inside,
+  it looks it was emptied recently, and in a hurry too.
+}
 
-(unless: $hasBlue)[Something shiny catches your eye. Trapped behind one of the shelves is a square of blue film set in a bronze frame.
+(unless: $hasBlue)[\
+  Something shiny catches your eye.\
+  Trapped behind one of the shelves is a square of blue film set in a bronze frame.
 
-](click: "blue film")[With a bit of wiggling you free the blue slide and pick it up.(set: $hasBlue to true)(set: $deck to it + (a: "blue slide"))
+](click: "blue film")[With a bit of wiggling\
+  you free the blue slide and pick it up.\
+  (set: $hasBlue to true)(set: $deck to it + (a: "blue slide"))
 
-]Behind you is the [[projector]], to the south is the [[grey door]], and to the north the mural of a [[$colour door->Magic Door]].
+]Behind you is the [[projector]],\
+to the south is the [[grey door]],\
+and to the north the odd-looking [[$colour door]].
 
-::Magic Door <900,450>
-(if: $colour is "white")[The painting of the door is life-size, life-like and highly detailed. It is covered in squiggles that you recognise as magic symbols, though you haven't the faintest idea what they mean.$projectorIsOn[ The light from the projector makes the paint crackle and sparkle wherever it touches.]](else:)[On closer inspection, the mural is no longer a painting but a real door that hums and crackles with power. It is now a brilliant shade of $colour. You are able to turn the handle, and when you do the door moves ever so slightly. You could (link: "go through")[(if: $colour is "blue")[(go-to: "Blue Room")](else-if: $colour is "cyan")[(go-to: "Cyan Room")](else-if: $colour is "green")[(go-to: "Green Room")](else-if: $colour is "yellow")[(go-to: "Yellow Room")](else-if: $colour is "red")[(go-to: "Red Room")](else-if: $colour is "magenta")[(go-to: "Magenta Room")]] if you wanted.]
 ::white door
 {
   The door turns out to be a life-size, life-like and highly detailed painting.
@@ -167,7 +181,7 @@ Behind you is the [[cupboard]], to the south is the [[grey door]], and to the no
   and sparkle wherever it touches.]
 }t
 
-The rest of the [[cellar]] lies behind you.
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 ::blue door
 {
