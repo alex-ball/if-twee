@@ -158,8 +158,99 @@ Behind you is the [[cupboard]], to the south is the [[grey door]], and to the no
 
 ::Magic Door <900,450>
 (if: $colour is "white")[The painting of the door is life-size, life-like and highly detailed. It is covered in squiggles that you recognise as magic symbols, though you haven't the faintest idea what they mean.$projectorIsOn[ The light from the projector makes the paint crackle and sparkle wherever it touches.]](else:)[On closer inspection, the mural is no longer a painting but a real door that hums and crackles with power. It is now a brilliant shade of $colour. You are able to turn the handle, and when you do the door moves ever so slightly. You could (link: "go through")[(if: $colour is "blue")[(go-to: "Blue Room")](else-if: $colour is "cyan")[(go-to: "Cyan Room")](else-if: $colour is "green")[(go-to: "Green Room")](else-if: $colour is "yellow")[(go-to: "Yellow Room")](else-if: $colour is "red")[(go-to: "Red Room")](else-if: $colour is "magenta")[(go-to: "Magenta Room")]] if you wanted.]
+::white door
+{
+  The door turns out to be a life-size, life-like and highly detailed painting.
+  It is covered in squiggles that you recognise as magical symbols,
+  though you haven't the faintest idea what they mean.
+  $projectorIsOn[The light from the projector makes the paint crackle
+  and sparkle wherever it touches.]
+}t
 
 The rest of the [[cellar]] lies behind you.
+
+::blue door
+{
+  (if: (history:) contains "Blue Room")[(go-to:"Blue Room")]
+  (else:)[
+    The door is
+    (if: (history:) contains "white door")[
+      no longer a painting but a real door, and is no longer white but
+    ]a brilliant shade of blue.
+    It hums and crackles with power wherever the light from the projector strikes it.
+    Some of the magical symbols that are carved on it are glowing brightly,
+    tracing out a sort of fish shape.
+    You are able to turn the handle, and when you do the door moves ever so slightly.
+    You could [[go through->Blue Room]] if you wanted.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
+
+::magenta door
+{
+  (if: (history:) contains "Magenta Room")[(go-to:"Magenta Room")]
+  (else:)[
+    The door is now a magnificent shade of magenta.
+    Before [[passing through it->Magenta Room]],
+    you notice that a different set of magical symbols are glowing;
+    these ones seem to form a box on wheels.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
+
+::red door
+{
+  (if: (history:) contains "Red Room")[(go-to:"Red Room")]
+  (else:)[
+    The door is now a ravishing shade of red.
+    Before [[passing through it->Red Room]],
+    you notice that a different set of magical symbols are glowing;
+    these ones seem to sketch out a knife, fork, and plate.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
+
+::yellow door
+{
+  (if: (history:) contains "Yellow Room")[(go-to:"Yellow Room")]
+  (else:)[
+    The door is now a yummy shade of yellow.
+    Before [[passing through it->Yellow Room]],
+    you notice that a different set of magical symbols are glowing;
+    these ones join up to form a bobbly brick.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
+
+::cyan door
+{
+  (if: (history:) contains "Cyan Room")[(go-to:"Cyan Room")]
+  (else:)[
+    The door is now a splendid shade of cyan.
+    Before [[passing through it->Cyan Room]],
+    you notice that a different set of magical symbols are glowing;
+    these ones look like a series of wavy lines.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
+
+::green door
+{
+  (if: (history:) contains "Green Room")[(go-to:"Green Room")]
+  (else:)[
+    The door is now a gorgeous shade of green.
+    Before [[passing through it->Green Room]],
+    you notice that a different set of magical symbols are glowing:
+    a triangle filled with fifteen circles.
+  ]
+}
+
+Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 ::Blue Room <1200,0>
 <style>
