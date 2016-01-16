@@ -1,0 +1,331 @@
+::StoryIFID[twee2]
+Twee2::build_config.story_ifid = "7C0717A5-5E23-4326-AC3D-6D1A1CBC7988"
+
+::StoryTitle
+The Spectrap
+
+::Variables [startup] <600,0>
+(set: $inventory to (a:))\
+(set: $deck to (a:))\
+(set: $projectorIsOn to false)\
+(set: $colour to "white")
+
+::Start <900,0>
+<style>
+  body {
+    background-color: #000000;
+  }
+  tw-passage {
+    color: #ffffff;
+  }
+</style>{
+  You are on the trail of a witch.
+  You have tracked her down to a house in the forest, and are looking around inside.
+  You go down to the dark cellar, but before you can find the light switch
+  the door closes behind you and you hear a key turning in the lock.
+  You are locked in!
+}
+
+{
+  You scrabble around for the [[light switch->cellar]]
+  and eventually find it next to the door.
+}
+
+::cellar <900,150>
+(unless: (history:) contains "cellar")[{
+  Click! The light comes on and you turn to see your surroundings for the first time.
+}
+
+]{
+  You are standing in the cellar.
+  The [[grey door]] by which you entered lies locked to the south.
+  A mural of a [[$colour door->Magic Door]] has, it seems, been
+  (if: $colour is "white")[painted on](else:)[carved into]
+  the north wall.
+}
+
+{
+  There is a table in the middle of the room holding a [[projector]]
+  and some unimportant bits and bobs.
+  A [[cupboard]] stands to one side.
+}
+
+::grey door <750,150>
+{
+  The door is plain but solid.
+  The handle is made of chunky steel;
+  the steel door plate below contains an empty keyhole.
+  You turn the handle and pull with all your might but the door does not budge in the slightest.
+}
+
+(if: $inventory contains "steel key")[{
+  The [[steel key->Escape]] you found looks like it might fit the keyhole.
+}](else:)[{
+  There is no way you are escaping this [[cellar]]
+  unless you can find a way to unlock the door.
+}]
+
+::projector <750,300>
+{
+  (unless: (history:) contains "projector")[(set: $slot to (a:))]
+  (unless: $projectorIsOn)[
+    (set: $colour to "white")
+  ](else-if: $slot contains "blue slide")[
+    (if: $slot contains "green slide")[(set: $colour to "cyan")]
+    (else-if: $slot contains "red slide")[(set: $colour to "magenta")]
+    (else:)[(set: $colour to "blue")]
+  ](else-if: $slot contains "green slide")[
+    (if: $slot contains "red slide")[(set: $colour to "yellow")]
+    (else:)[(set: $colour to "green")]
+  ](else-if: $slot contains "red slide")[(set: $colour to "red")
+  ](else:)[(set: $colour to "white")]
+The projector is an old-fashioned contraption, all brass and glass. Inside there are two slots: (if: $slot's length is 0)[both are empty](else:)[one contains the (print: $slot's 1st) and the other (if: $slot's length is 1)[is empty](else:)[contains the (print: $slot's 2nd)]].\
+(if: ($slot's length > 0))[* You could take the (link: $slot's 1st)[(move: $slot's 1st into $x)(set: $deck to it + (a: $x))(go-to: "projector")] out of the projector.]\
+(if: ($slot's length > 1))[* You could take the (link: $slot's 2nd)[(move: $slot's 2nd into $x)(set: $deck to it + (a: $x))(go-to: "projector")] out of the projector.]\
+(if: ($deck's length > 0) and ($slot's length < 2))[* You could try putting the (link: $deck's 1st)[(move: $deck's 1st into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
+(if: ($deck's length > 1) and ($slot's length < 2))[* You could try putting the (link: $deck's 2nd)[(move: $deck's 2nd into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
+(if: ($deck's length > 2) and ($slot's length < 2))[* You could try putting the (link: $deck's 3rd)[(move: $deck's 3rd into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
+}(if: ($slot's length is 0) and ($deck's length is 0))[
+
+](unless: $projectorIsOn)[The projector is currently switched off, but there is a (link: "switch on the side")[(set: $projectorIsOn to true)(go-to: "projector")].](else:)[The projector is currently switched on and humming with power. There is a (link: "switch on the side")[(set: $projectorIsOn to false)(go-to: "projector")].
+
+The light from the projector is shining on the door mural on the north wall of the [[cellar]], (unless: $colour is "white")[turning it a brilliant shade of $colour and ]making it scintillate and sparkle.]
+
+Behind you is the [[cupboard]], to the south is the [[grey door]], and to the north the mural of a [[$colour door->Magic Door]].
+
+::cupboard <1050,300>
+(unless: (history:) contains "cupboard")[(set: $hasBlue to false)]The cupboard takes up most of one wall of the [[cellar]]. From the pattern of dust and scratches inside, it looks it was emptied recently, and in a hurry too.
+
+(unless: $hasBlue)[Something shiny catches your eye. Trapped behind one of the shelves is a square of blue film set in a bronze frame.
+
+](click: "blue film")[With a bit of wiggling you free the blue slide and pick it up.(set: $hasBlue to true)(set: $deck to it + (a: "blue slide"))
+
+]Behind you is the [[projector]], to the south is the [[grey door]], and to the north the mural of a [[$colour door->Magic Door]].
+
+::Magic Door <900,450>
+(if: $colour is "white")[The painting of the door is life-size, life-like and highly detailed. It is covered in squiggles that you recognise as magic symbols, though you haven't the faintest idea what they mean.$projectorIsOn[ The light from the projector makes the paint crackle and sparkle wherever it touches.]](else:)[On closer inspection, the mural is no longer a painting but a real door that hums and crackles with power. It is now a brilliant shade of $colour. You are able to turn the handle, and when you do the door moves ever so slightly. You could (link: "go through")[(if: $colour is "blue")[(go-to: "Blue Room")](else-if: $colour is "cyan")[(go-to: "Cyan Room")](else-if: $colour is "green")[(go-to: "Green Room")](else-if: $colour is "yellow")[(go-to: "Yellow Room")](else-if: $colour is "red")[(go-to: "Red Room")](else-if: $colour is "magenta")[(go-to: "Magenta Room")]] if you wanted.]
+
+The rest of the [[cellar]] lies behind you.
+
+::Blue Room <1200,0>
+<style>
+  body {
+    background-color: #d0dcfb;
+  }
+  tw-passage {
+    color: #0c308d;
+  }
+</style>(unless: (history:) contains "Blue Room")[(set: $hasRed to false)(set: $hasBlueBall to false)(set: $hasFood to false)(set: $hasTower to false)(set: $hasNet to false)(set: $fishing to false)]You are in a small room with pale blue walls, and lit by a couple of standard lamps. To one side is a wooden table painted ultramarine; on it
+* $hasBlueBall[was a blue ball, but you have taken it;](else:)[is a shiny blue ball – (link: "take it?")[(set: $hasBlueBall to true)(set: $inventory to it + (a: "blue ball"))taken;]]
+* $hasFood[was a packet of fish food, but you have taken it;](else:)[is a packet of fish food – (link: "take it?")[(set: $hasFood to true)(set: $inventory to it + (a: "fish food"))taken;]]
+* $hasTower[was a model of a castle tower, but you have taken it;](else:)[is a model of a castle tower – (link: "take it?")[(set: $hasTower to true)(set: $inventory to it + (a: "model tower"))taken;]]
+* $hasNet[was a long-handled fish net, but you have taken it;](else:)[is a long-handled fish net – (link: "take it?")[(set: $hasNet to true)(set: $inventory to it + (a: "fish net"))taken;]]
+In the centre of the room is a large fish tank, populated with an amazing variety of colourful fish.$fishing[ At the bottom of the tank is a red film slide partially buried in the gravel. You can't reach it, but perhaps you might have something to help (do you need to [[check again->Blue Room]]?).\
+$hasBlueBall[* The (link-reveal: "blue ball")[ – no, that would be silly].]\
+$hasFood[* The (link-reveal: "packet of fish food")[ – you sprinkle some food in the tank, but while the fish gobble it up gratefully, none of them seem inclined to fetch the slide for you].]\
+$hasTower[* The (link-reveal: "model of a castle tower")[ – picking up the tower and plunging into the tank, you can just about tickle the gravel with the tip, but frustratingly the slide remains just out of reach].]\
+$hasNet[* The (link-reveal: "long-handled fish net")[ – you dip the net into the tank and after a few clumsy attempts, manage to scoop the red slide out of the tank(set: $hasRed to true)(set: $deck to it + (a: "red slide"))(set: $fishing to false)].]\
+](else:)[(click: "colourful fish")[
+
+You watch the fish flit around the tank, marvelling at the dazzling colours: azure, ultramarine, cerulean, smalt, sapphire, cornflower, celeste&nbsp;.&nbsp;.&nbsp;.(unless: $hasRed)[ A pindani fish skims the gravel at the bottom of the tank, revealing something underneath. You peer at it intently. It seems to be a small square of red film set in a brass frame.]
+
+](click: "red film")[(set: $fishing to true)You can't reach the red slide since the glass walls of the tank are too high. You had better [[check your pockets->Blue Room]] for something to help.]
+
+]A [[blue door->cellar]] lies to the south.
+
+::Magenta Room <750,600>
+<style>
+  body {
+    background-color: #f1d0fb;
+  }
+  tw-passage {
+    color: #6d0c8d;
+  }
+</style>(unless: (history:) contains "Magenta Room")[(set: $carriage to (shuffled: "First", "Second", "Third", "Fourth"))]You are in a narrow corridor; the windows on either side are covered up with magenta blinds. The curve of the low ceiling, the vibration of the floor, and the clickety-clack from outside reveal you are in a railway carriage. You can count four compartments on the eastern side; you could look in the [[first->(print: $carriage's 1st) Compartment]], [[second->(print: $carriage's 2nd) Compartment]], [[third->(print: $carriage's 3rd) Compartment]] or [[fourth->(print: $carriage's 4th) Compartment]].
+
+A [[magenta door->cellar]] lies to the south and a wooden door lies north(click: "wooden door")[, though it is securely locked: you guess this is the last carriage before the engine].
+
+::First Compartment <600,600>
+<style>
+  body {
+    background-color: #f1d0fb;
+  }
+  tw-passage {
+    color: #6d0c8d;
+  }
+</style>There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+
+On the floor is a circle of a wooden track, on which is a red toy train with blue, green and yellow carriages.
+
+(click: "toy train")[You amuse yourself running the train around the track for a few moments. After a while you decide this is not going to help you escape, so you stand back up.
+
+]The [[door to the corridor->Magenta Room]] is to the west.
+
+::Second Compartment <600,750>
+<style>
+  body {
+    background-color: #f1d0fb;
+  }
+  tw-passage {
+    color: #6d0c8d;
+  }
+</style>(unless: (history:) contains "Second Compartment")[(set: $hasPinkBall to false)]There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+
+In the luggage racks above the seats, there is a wooden crate and a sports bag.
+
+(click: "wooden crate")[You heave the crate down from the rack and prise open the lid. Inside, packed in ice, is a month's supply of pickled herring, somewhat red in colour – (link: "take one?")[(set: $inventory to it + (a: "red herring"))Taken.] You put the lid back on the crate as best you can and carefully hoist it back to the rack.
+
+](click: "sports bag")[You lift the sports bag from the rack and unzip it. Inside you find a stripy waistcoat, a red bow-tie and a peculiar upside-down-ish pair of glasses.(unless: $hasPinkBall)[ There is also a shiny pink ball rolling around inside – (link: "take it?")[(set: $hasPinkBall to true)(set: $inventory to it + (a: "pink ball"))Taken.]] You zip up the sports bag again and replace it on the rack.
+
+]The [[door to the corridor->Magenta Room]] is to the west.
+
+::Third Compartment <750,750>
+<style>
+  body {
+    background-color: #f1d0fb;
+  }
+  tw-passage {
+    color: #6d0c8d;
+  }
+</style>(unless: (history:) contains "Third Compartment")[(set: $hasPrune to false)]There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+
+In the luggage racks above the seats, there is a large suitcase and a shopping basket.
+
+(click: "large suitcase")[You heft the suitcase down from the rack and pop it open. Inside is a white surplice, a purple cassock, a golden mitre and stole, and some other items of church clothing. Not your sort of thing at all. You close the suitcase and put it back.
+
+](click: "shopping basket")[You carefully remove the basket from the rack and look inside. $hasPrune[It is empty.](else:)[Rolling around inside is a fresh prune. It is bright purple and looks firm and juicy – (link: "take it?")[(set: $hasPrune to true)(set: $inventory to it + (a: "prune"))Taken].] You pop it back up on the rack.
+
+]The [[door to the corridor->Magenta Room]] is to the west.
+
+::Fourth Compartment <900,750>
+<style>
+  body {
+    background-color: #f1d0fb;
+  }
+  tw-passage {
+    color: #6d0c8d;
+  }
+</style>There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+
+There is a newspaper on one of the seats. (click: "newspaper")[You flick through for any clues where the witch might escape to next, or how you might escape, but all you can find is a doodle of 15 circles formed into a solid triangle.]
+
+The [[door to the corridor->Magenta Room]] is to the west.
+
+::Red Room <1050,600>
+<style>
+  body {
+    background-color: #fbd0db;
+  }
+  tw-passage {
+    color: #8d0c2d;
+  }
+</style>(unless: (history:) contains "Red Room")[(set: $hasGreen to false)(set: $hasRedBall to false)(set: $frveg to (shuffled: "tomato", "carrot", "banana", "lettuce", "punnet of blueberries", ""))(set: $solution to (a: "tomato", "carrot", "banana", "lettuce", "punnet of blueberries", "prune"))]You are in a dining room decorated with rich ruby-coloured wallpaper. There is a long table in the middle of the room, covered in a crimson velvet tablecloth.
+
+On the table is a silver cloche or serving dome and a row of coloured plates:
+* the red plate (if: $frveg's 1st is "")[is empty(set: $swapR to "put the (print: $frveg's 6th) here")](else:)[holds a **(print: $frveg's 1st)**(if: $frveg's 6th is "")[(set: $swapR to "move it to the purple plate")](else:)[(set: $swapR to "swap it with the (print: $frveg's 6th)")]] – you could (if: ($frveg's 1st is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 1st to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapR)[(set: $x to $frveg's 1st)(set: $frveg's 1st to $frveg's 6th)(set: $frveg's 6th to $x)(go-to: "Red Room")].
+* the orange plate (if: $frveg's 2nd is "")[is empty(set: $swapO to "put the (print: $frveg's 1st) here")](else:)[holds a **(print: $frveg's 2nd)**(if: $frveg's 1st is "")[(set: $swapO to "move it to the red plate")](else:)[(set: $swapO to "swap it with the (print: $frveg's 1st)")]] – you could (if: ($frveg's 2nd is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 2nd to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapO)[(set: $x to $frveg's 2nd)(set: $frveg's 2nd to $frveg's 1st)(set: $frveg's 1st to $x)(go-to: "Red Room")].
+* the yellow plate (if: $frveg's 3rd is "")[is empty(set: $swapY to "put the (print: $frveg's 2nd) here")](else:)[holds a **(print: $frveg's 3rd)**(if: $frveg's 2nd is "")[(set: $swapY to "move it to the orange plate")](else:)[(set: $swapY to "swap it with the (print: $frveg's 2nd)")]] – you could (if: ($frveg's 3rd is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 3rd to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapY)[(set: $x to $frveg's 3rd)(set: $frveg's 3rd to $frveg's 2nd)(set: $frveg's 2nd to $x)(go-to: "Red Room")].
+* the green plate (if: $frveg's 4th is "")[is empty(set: $swapG to "put the (print: $frveg's 3rd) here")](else:)[holds a **(print: $frveg's 4th)**(if: $frveg's 3rd is "")[(set: $swapG to "move it to the yellow plate")](else:)[(set: $swapG to "swap it with the (print: $frveg's 3rd)")]] – you could (if: ($frveg's 4th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 4th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapG)[(set: $x to $frveg's 4th)(set: $frveg's 4th to $frveg's 3rd)(set: $frveg's 3rd to $x)(go-to: "Red Room")].
+* the blue plate (if: $frveg's 5th is "")[is empty(set: $swapB to "put the (print: $frveg's 4th) here")](else:)[holds a **(print: $frveg's 5th)**(if: $frveg's 4th is "")[(set: $swapB to "move it to the green plate")](else:)[(set: $swapB to "swap it with the (print: $frveg's 4th)")]] – you could (if: ($frveg's 5th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 5th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapB)[(set: $x to $frveg's 5th)(set: $frveg's 5th to $frveg's 4th)(set: $frveg's 4th to $x)(go-to: "Red Room")].
+* the purple (or maybe indigo or violet) plate (if: $frveg's 6th is "")[is empty(set: $swapP to "put the (print: $frveg's 5th) here")](else:)[holds a **(print: $frveg's 6th)**(if: $frveg's 5th is "")[(set: $swapP to "move it to the blue plate")](else:)[(set: $swapP to "swap it with the (print: $frveg's 5th)")]] – you could (if: ($frveg's 6th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 6th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapP)[(set: $x to $frveg's 6th)(set: $frveg's 6th to $frveg's 5th)(set: $frveg's 5th to $x)(go-to: "Red Room")].
+(if: $frveg is $solution)[There is a bong, as if from a dinner gong.
+
+](click: "silver cloche")[$hasGreen[$hasRedBall[You lift up the cloche and take a peek underneath, but there is nothing there.](else:)[You lift up the cloche again. There is a ripping sound and a thud, and a shiny red ball rolls out from underneath. You inspect the underside of the cloche and discover the ball had been taped there. You guess it must be important and take it.(set: $hasRedBall to true)(set: $inventory to it + (a: "red ball"))]](else-if: $frveg is $solution)[You lift up the cloche and reveal a square of green film in a brass frame – (link: "do you want to take it?")[Taken(set: $hasGreen to true)(set: $deck to it + (a: "green slide"))].](else:)[Try as you might, you cannot lift the cloche; it seems to be stuck to the table.]
+
+]A [[red door->cellar]] lies to the south.
+
+::Yellow Room <1150,450>
+<style>
+  body {
+    background-color: #fbf1d0;
+  }
+  tw-passage {
+    color: #8d6d0c;
+  }
+</style>(unless: (history:) contains "Yellow Room")[(set: $building to false)(set: $bricks to 50)(set: $model14 to false)(set: $model15 to false)(set: $model16 to false)(set: $model17 to false)(set: $model18 to false)(set: $hasIvoryKey to false)(set: $hasYellowBall to false)]You are in a room that appears to be made out of smooth yellow plastic. The floor is covered in a regular grid of short circular stumps. In one corner is a tiny table made out of small brown and green bricks. In the other is a large yellow cylinder, rounded top and bottom, with a face painted on it in black; in other words, a giant stylised head.
+
+$building[In front of you are $bricks bricks and a set of instructions. The instructions tell you how to make five models:
+* A car (14 bricks) – $model14[you have built this model, (link: "break it up?")[(set: $model14 to false)(set: $bricks to it + 14)(go-to: "Yellow Room")]](else:)[(if: $bricks < 14)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model14 to true)(set: $bricks to it - 14)(go-to: "Yellow Room")]]]
+* A van (15 bricks) – $model15[you have built this model, (link: "break it up?")[(set: $model15 to false)(set: $bricks to it + 15)(go-to: "Yellow Room")]](else:)[(if: $bricks < 15)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model15 to true)(set: $bricks to it - 15)(go-to: "Yellow Room")]]]
+* A lorry (16 bricks) – $model16[you have built this model, (link: "break it up?")[(set: $model16 to false)(set: $bricks to it + 16)(go-to: "Yellow Room")]](else:)[(if: $bricks < 16)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model16 to true)(set: $bricks to it - 16)(go-to: "Yellow Room")]]]
+* A carriage (17 bricks) – $model17[you have built this model, (link: "break it up?")[(set: $model17 to false)(set: $bricks to it + 17)(go-to: "Yellow Room")]](else:)[(if: $bricks < 17)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model17 to true)(set: $bricks to it - 17)(go-to: "Yellow Room")]]]
+* A steam engine (18 bricks) – $model18[you have built this model, (link: "break it up?")[(set: $model18 to false)(set: $bricks to it + 18)(go-to: "Yellow Room")]](else:)[(if: $bricks < 18)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model18 to true)(set: $bricks to it - 18)(go-to: "Yellow Room")]]]
+(if: $bricks is 0)[It could be your imagination, but it seems like the giant stylised head is positively beaming at you.
+
+](click: "giant stylised head")[(if: ($bricks is 0) and not $hasIvoryKey)[You peer into the head. Even though you definitely emptied it before, it now contains a key that looks like it was made from bone or ivory – (link: "take it?")[(set: $hasIvoryKey to true)(set: $inventory to it + (a: "ivory key"))taken.]](else:)[The head is empty.]
+
+]](else:)[(click: "giant stylised head")[It looks like the top might come off the head.
+
+](click: "the top")[You give the top of the head a sharp twist, and it comes loose. You take it off and put it to one side, then peer inside the head. You see a set of instructions and lots of bricks.
+
+](click: "lots of bricks")[You count out the bricks and compare them to the instructions. There are enough to (link: "build")[(set: $building to true)(go-to: "Yellow Room")] some but not all of the models.
+
+]](unless: $hasYellowBall)[(click: "tiny table")[On the table is a shiny yellow ball – (link: "take it?")[(set: $hasYellowBall to true)(set: $inventory to it + (a: "yellow ball"))taken.]
+
+]]A [[yellow door->cellar]] lies to the south.
+
+::Cyan Room <1200,150>
+<style>
+  body {
+    background-color: #d0fbf1;
+  }
+  tw-passage {
+    color: #0c8d6d;
+  }
+</style>(unless: (history:) contains "Cyan Room")[(set: $chestOpen to false)(set: $hasGreenBall to false)]You are in a wood-panelled room that looks for all the world like the captain's cabin on an old sailing ship. Indeed, there is a rhythmic creaking coming from the floor, a salty tang to the air, and through the window opposite you can see an endless expanse of blue-green ocean. How this can be possible in a cellar in a forest you don't know, but it's not the strangest thing that has happened to you today.
+
+A large desk, topped with turquoise leather and bounded by a brass rail, stands before you, and $chestOpen[an open](else:)[a closed] chest lies on the floor to one side.
+
+(click: "closed chest")[The chest is made of oak and bound with iron bands. In the front is a lock panelled with bone or ivory. (if: $inventory contains "ivory key")[The ivory key you found looks like it might fit the lock.
+
+](else:)[You do not have a key that would fit.
+
+](click: "ivory key")[You turn the ivory key in the lock and it turns easily. There is a quiet click. You open the lid. (set: $chestOpen to true)$hasGreenBall[The chest is empty.](else:)[The chest is empty except for a shiny green ball – (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]]]
+
+](click: "open chest")[The chest is made of oak and bound with iron bands. $hasGreenBall[It is empty.](else:)[It is empty except for a shiny green ball – (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]]
+
+]A [[cyan door->cellar]] lies to the south.
+
+::Green Room <1200,300>
+<style>
+  body {
+    background-color: #dbfbd0;
+  }
+  tw-passage {
+    color: #2d8d0c;
+  }
+</style>(unless: (history:) contains "Green Room")[(set: $inPlay to (shuffled: "brown", "black"))(set: $potted to (a:))(set: $snooker to (a: "red", "yellow", "green", "brown", "blue", "pink", "black"))(set: $hasKey to false)]You are in a dimly lit room lined with racing green drapes. There is a snooker table in the centre of the room, and on one side a rack containing (unless: $inventory contains "cue")[a cue, ]some chalk, a triangle, a score counter and a rule card.
+
+(click: "rule card")[You skim through the rules. You are familiar with most of them but check the potting order, which turns out to be red, yellow, green, brown, blue, pink then black.
+
+](click: "a cue")[(set: $inventory to it + (a: "cue"))You pick up the cue and rub some chalk on the tip to make it less slippy. 
+
+](click: "snooker table")[The table is a standard snooker table covered in green baize. There are six holes for potting balls into. ]On the table (if: $inPlay's length is 0)[is a solitary ball](else:)[are some coloured balls]: the white cue ball(if: $inPlay's length > 0)[, a (print: $inPlay's 1st) ball](if: $inPlay's length > 1)[, a (print: $inPlay's 2nd) ball](if: $inPlay's length > 2)[, a (print: $inPlay's 3rd) ball](if: $inPlay's length > 3)[, a (print: $inPlay's 4th) ball](if: $inPlay's length > 4)[, a (print: $inPlay's 5th) ball](if: $inPlay's length > 5)[, a (print: $inPlay's 6th) ball](if: $inPlay's length > 6)[, a (print: $inPlay's 7th) ball].
+(if: $potted is $snooker)[(unless: $hasKey)[
+As the last ball drops into the pocket, it makes a strange clunking sound. You delve around inside the pocket and find, among the coloured balls, a steel key. It looks like it might be useful, so you pick it up.(set: $inventory to it + (a: "steel key"))
+]](else:)[\
+(if: $inPlay contains "black")[* You could try (link: "potting the black")[(set: $inPlay to it - (a: "black"))(set: $potted to it + (a: "black"))(go-to: "Green Room")]]\
+(if: $inventory contains "blue ball")[* You could (link: "put the blue ball down")[(set: $inventory to it - (a: "blue ball"))(set: $inPlay to it + (a: "blue"))(go-to: "Green Room")]](else-if: $inPlay contains "blue")[* You could try (link: "potting the blue")[(set: $inPlay to it - (a: "blue"))(set: $potted to it + (a: "blue"))(go-to: "Green Room")]]\
+(if: $inPlay contains "brown")[* You could try (link: "potting the brown")[(set: $inPlay to it - (a: "brown"))(set: $potted to it + (a: "brown"))(go-to: "Green Room")]]\
+(if: $inventory contains "green ball")[* You could (link: "put the green ball down")[(set: $inventory to it - (a: "green ball"))(set: $inPlay to it + (a: "green"))(go-to: "Green Room")]](else-if: $inPlay contains "green")[* You could try (link: "potting the green")[(set: $inPlay to it - (a: "green"))(set: $potted to it + (a: "green"))(go-to: "Green Room")]]\
+(if: $inventory contains "pink ball")[* You could (link: "put the pink ball down")[(set: $inventory to it - (a: "pink ball"))(set: $inPlay to it + (a: "pink"))(go-to: "Green Room")]](else-if: $inPlay contains "pink")[* You could try (link: "potting the pink")[(set: $inPlay to it - (a: "pink"))(set: $potted to it + (a: "pink"))(go-to: "Green Room")]]\
+(if: $inventory contains "red ball")[* You could (link: "put the red ball down")[(set: $inventory to it - (a: "red ball"))(set: $inPlay to it + (a: "red"))(go-to: "Green Room")]](else-if: $inPlay contains "red")[* You could try (link: "potting the red")[(set: $inPlay to it - (a: "red"))(set: $potted to it + (a: "red"))(go-to: "Green Room")]]\
+(if: $inventory contains "yellow ball")[* You could (link: "put the yellow ball down")[(set: $inventory to it - (a: "yellow ball"))(set: $inPlay to it + (a: "yellow"))(go-to: "Green Room")]](else-if: $inPlay contains "yellow")[* You could try (link: "potting the yellow")[(set: $inPlay to it - (a: "yellow"))(set: $potted to it + (a: "yellow"))(go-to: "Green Room")]]\
+(if: $potted's length > 0)[* You could (link: "reset the table")[(set: $inPlay to it + $potted)(set: $potted to (a:))(go-to: "Green Room")]]\
+]
+A [[green door->cellar]] lies to the south.
+
+::Escape <600,300>
+The steel key does indeed fit neatly in the lock. Hardly daring to breathe, you turn the key. To your immense relief, there is a loud clunk as the door unlocks. You yank open the door and, pausing only to turn out the light behind you, bound up the stairs.
+
+You are free!
+
+Now all you have to find out where the witch went...
+
+**Congratulations, you have won.**
+
+::Debug [debug-startup]
+
+::Twee2Settings [twee2]
+@story_start_name = 'Start'
+
