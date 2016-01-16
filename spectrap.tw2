@@ -483,7 +483,7 @@ Now all you have to find out where the witch went...
 
 **Congratulations, you have won.**
 
-::Debug [debug-startup]
+::Zebug [startup]
 
 ::Twee2Settings [twee2]
 @story_start_name = 'Start'
