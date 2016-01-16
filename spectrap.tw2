@@ -79,19 +79,73 @@ The Spectrap
     (else:)[(set: $colour to "green")]
   ](else-if: $slot contains "red slide")[(set: $colour to "red")
   ](else:)[(set: $colour to "white")]
-The projector is an old-fashioned contraption, all brass and glass. Inside there are two slots: (if: $slot's length is 0)[both are empty](else:)[one contains the (print: $slot's 1st) and the other (if: $slot's length is 1)[is empty](else:)[contains the (print: $slot's 2nd)]].\
-(if: ($slot's length > 0))[* You could take the (link: $slot's 1st)[(move: $slot's 1st into $x)(set: $deck to it + (a: $x))(go-to: "projector")] out of the projector.]\
-(if: ($slot's length > 1))[* You could take the (link: $slot's 2nd)[(move: $slot's 2nd into $x)(set: $deck to it + (a: $x))(go-to: "projector")] out of the projector.]\
-(if: ($deck's length > 0) and ($slot's length < 2))[* You could try putting the (link: $deck's 1st)[(move: $deck's 1st into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
-(if: ($deck's length > 1) and ($slot's length < 2))[* You could try putting the (link: $deck's 2nd)[(move: $deck's 2nd into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
-(if: ($deck's length > 2) and ($slot's length < 2))[* You could try putting the (link: $deck's 3rd)[(move: $deck's 3rd into $x)(set: $slot to it + (a: $x))(go-to: "projector")] into the projector.]\
-}(if: ($slot's length is 0) and ($deck's length is 0))[
+  The projector is an old-fashioned contraption, all brass and glass.
+  Inside there are [[two slots]]:
+  (if: $slot's length is 0)[both are empty.]
+  (else:)[
+    one contains the **(print: $slot's 1st)** and the other
+    (if: $slot's length is 1)[is empty.]
+    (else:)[contains the **(print: $slot's 2nd)**.]
+  ]
+}
 
 ](unless: $projectorIsOn)[The projector is currently switched off, but there is a (link: "switch on the side")[(set: $projectorIsOn to true)(go-to: "projector")].](else:)[The projector is currently switched on and humming with power. There is a (link: "switch on the side")[(set: $projectorIsOn to false)(go-to: "projector")].
 
 The light from the projector is shining on the door mural on the north wall of the [[cellar]], (unless: $colour is "white")[turning it a brilliant shade of $colour and ]making it scintillate and sparkle.]
 
 Behind you is the [[cupboard]], to the south is the [[grey door]], and to the north the mural of a [[$colour door->Magic Door]].
+
+::two slots
+(unless: (history:) contains "two slots")[(set: $firstSlide to true)]\
+(if: ($slot's length is 0) and ($deck's length is 0))[\
+  The slots lie between the bulb and the lens.\
+  They look like they would hold something small, thin and square.
+  
+  You look again at the [[projector]].\
+](else-if: ($deck's length is 1) and $firstSlide)[\
+    It looks like the slide you found would fit in one of the slots.
+    Will you (link: "give it a try")[(move: $deck's 1st into $x)\
+      (set: $slot to it + (a: $x))\
+      (set: $firstSlide to false)\
+      (go-to: "projector")\
+    ], or [[not->projector]]?\
+](else:)[\
+  (if: $slot's length > 0)[\
+    Will you take the\
+    (link: $slot's 1st)[(move: $slot's 1st into $x)\
+      (set: $deck to it + (a: $x))\
+      (go-to: "two slots")\
+    ] out of the slots?\
+    (if: ($slot's length is 2))[Or the\
+      (link: $slot's 2nd)[(move: $slot's 2nd into $x)\
+        (set: $deck to it + (a: $x))\
+        (go-to: "two slots")\
+      ]?\
+    ]
+    
+  ]\
+  (if: ($slot's length < 2) and ($deck's length > 0))[\
+    Will you put the\
+    (link: $deck's 1st)[(move: $deck's 1st into $x)\
+      (set: $slot to it + (a: $x))\
+      (go-to: "two slots")\
+    ] into one of the slots?\
+    (if: ($deck's length >= 2))[Or the\
+      (link: $deck's 2nd)[(move: $deck's 2nd into $x)\
+        (set: $slot to it + (a: $x))\
+        (go-to: "two slots")\
+      ]?\
+    ]\
+    (if: ($deck's length is 3))[Or the\
+      (link: $deck's 3rd)[(move: $deck's 3rd into $x)\
+        (set: $slot to it + (a: $x))\
+        (go-to: "two slots")\
+      ]?\
+    ]
+    
+  ]\
+  Or will you look again at the [[projector]]?\
+]
 
 ::cupboard <1050,300>
 (unless: (history:) contains "cupboard")[(set: $hasBlue to false)]The cupboard takes up most of one wall of the [[cellar]]. From the pattern of dust and scratches inside, it looks it was emptied recently, and in a hurry too.
