@@ -274,23 +274,158 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   tw-passage {
     color: #0c308d;
   }
-</style>(unless: (history:) contains "Blue Room")[(set: $hasRed to false)(set: $hasBlueBall to false)(set: $hasFood to false)(set: $hasTower to false)(set: $hasNet to false)(set: $fishing to false)]You are in a small room with pale blue walls, and lit by a couple of standard lamps. To one side is a wooden table painted ultramarine; on it
-* $hasBlueBall[was a blue ball, but you have taken it;](else:)[is a shiny blue ball – (link: "take it?")[(set: $hasBlueBall to true)(set: $inventory to it + (a: "blue ball"))taken;]]
-* $hasFood[was a packet of fish food, but you have taken it;](else:)[is a packet of fish food – (link: "take it?")[(set: $hasFood to true)(set: $inventory to it + (a: "fish food"))taken;]]
-* $hasTower[was a model of a castle tower, but you have taken it;](else:)[is a model of a castle tower – (link: "take it?")[(set: $hasTower to true)(set: $inventory to it + (a: "model tower"))taken;]]
-* $hasNet[was a long-handled fish net, but you have taken it;](else:)[is a long-handled fish net – (link: "take it?")[(set: $hasNet to true)(set: $inventory to it + (a: "fish net"))taken;]]
-In the centre of the room is a large fish tank, populated with an amazing variety of colourful fish.$fishing[ At the bottom of the tank is a red film slide partially buried in the gravel. You can't reach it, but perhaps you might have something to help (do you need to [[check again->Blue Room]]?).\
-$hasBlueBall[* The (link-reveal: "blue ball")[ – no, that would be silly].]\
-$hasFood[* The (link-reveal: "packet of fish food")[ – you sprinkle some food in the tank, but while the fish gobble it up gratefully, none of them seem inclined to fetch the slide for you].]\
-$hasTower[* The (link-reveal: "model of a castle tower")[ – picking up the tower and plunging into the tank, you can just about tickle the gravel with the tip, but frustratingly the slide remains just out of reach].]\
-$hasNet[* The (link-reveal: "long-handled fish net")[ – you dip the net into the tank and after a few clumsy attempts, manage to scoop the red slide out of the tank(set: $hasRed to true)(set: $deck to it + (a: "red slide"))(set: $fishing to false)].]\
-](else:)[(click: "colourful fish")[
+</style>{
+  (unless: (history:) contains "Blue Room")[(set: $hasRed to false)]
+  You are in a small room with pale blue walls,
+  and lit by a couple of standard lamps.
+  To one side is a [[wooden table]] painted navy blue.
+}
 
-You watch the fish flit around the tank, marvelling at the dazzling colours: azure, ultramarine, cerulean, smalt, sapphire, cornflower, celeste&nbsp;.&nbsp;.&nbsp;.(unless: $hasRed)[ A pindani fish skims the gravel at the bottom of the tank, revealing something underneath. You peer at it intently. It seems to be a small square of red film set in a brass frame.]
+{
+  In the centre of the room is a large [[fish tank]],
+  populated with an amazing variety of colourful fish.
+}
 
-](click: "red film")[(set: $fishing to true)You can't reach the red slide since the glass walls of the tank are too high. You had better [[check your pockets->Blue Room]] for something to help.]
+{
+  A [[blue door->cellar]] lies to the south.
+}
 
-]A [[blue door->cellar]] lies to the south.
+::wooden table
+<style>
+  body {
+    background-color: #d0dcfb;
+  }
+  tw-passage {
+    color: #0c308d;
+  }
+</style>{
+  (unless: (history:) contains "wooden table")[
+    (set: $blueItems to (datamap: "blue ball", "shiny blue ball",
+      "fish food", "packet of fish food",
+      "model tower", "model of a castle tower",
+      "fish net", "long-handled fish net"))
+    (set: $tableTop to (shuffled: ...(datanames: $blueItems)))
+  ]
+  (if: $tableTop's length is 0)[
+    The wooden table is empty.
+  ](else-if: $tableTop's length is 1)[
+    On the wooden table is a curious object:
+    a (link-reveal: $blueItems's ($tableTop's 1st))[,\
+      (set: $inventory to it + (a: $tableTop's 1st))\
+      which you take].
+  ](else:)[
+    On the wooden table are some curious objects:
+    * a (link-reveal: $blueItems's ($tableTop's 1st))[,\
+      (set: $inventory to it + (a: $tableTop's 1st))\
+      which you take];
+      
+    * a (link-reveal: $blueItems's ($tableTop's 2nd))[,\
+      (set: $inventory to it + (a: $tableTop's 2nd))\
+      which you take](if: $tableTop's length > 2)[;](else:)[.]
+    (if: $tableTop's length > 2)[* a\
+      (link-reveal: $blueItems's ($tableTop's 3rd))[,\
+      (set: $inventory to it + (a: $tableTop's 3rd))\
+      which you take](if: $tableTop's length > 3)[;](else:)[.]\
+    ](if: $tableTop's length > 3)[* a\
+      (link-reveal: $blueItems's ($tableTop's 4th))[,\
+      (set: $inventory to it + (a: $tableTop's 4th))\
+      which you take].\
+    ]\
+  ]
+  Behind you is the (link: "fish tank")[\
+  (set: $tableTop to it - $inventory)\
+  (go-to: "fish tank")],
+  and a (link: "blue door")[\
+  (set: $tableTop to it - $inventory)\
+  (go-to: "cellar")] lies to the south.
+}
+
+::fish tank
+(unless: (history:) contains "fish tank")[(set: $fishing to false)]\
+$fishing[(go-to: "fishing")]\
+<style>
+  body {
+    background-color: #d0dcfb;
+  }
+  tw-passage {
+    color: #0c308d;
+  }
+</style>{
+  You watch the fish flit around the tank,
+  marvelling at their dazzling colours.
+  Among many others, you spot a red and turquoise discus fish,
+  a sunset blushing angelfish,
+  a tiger oscar fish,
+  and an ultramarine pindani fish.
+}
+
+(unless: $deck contains "red slide")[\
+(click: "discus fish")[The discus fish looks big and round from the side,\
+  but thin from the front. It nuzzles its way into some greenery.
+
+](click: "angelfish")[The angelfish darts playfully around the tank,\
+  looking for all the world like an arrowhead seeking its target.
+
+](click: "oscar fish")[The oscar noses around just under the surface of the water,\
+  probably hunting for stray scraps of food.
+
+](click: "pindani fish")[The pindani skims the gravel at the bottom of the tank,\
+  revealing something underneath.\
+  You peer at it intently.\
+  It seems to be a small square of\
+  (link: "red film")[(set: $fishing to true)(go-to: "fishing")]\
+  set in a brass frame.
+  
+]]{
+  Behind you is the [[wooden table]],
+  and a [[blue door->cellar]] lies to the south.
+}
+
+::fishing
+<style>
+  body {
+    background-color: #d0dcfb;
+  }
+  tw-passage {
+    color: #0c308d;
+  }
+</style>{
+  (unless: (history:) contains "fishing")[(set: $tried to (a:))(set: $hasNowt to true)]
+  At the bottom of the tank is a red film slide partially buried in the gravel. 
+  You can't reach it since the glass walls of the tank are too high.
+  You check your pockets for something to help.
+}
+(if: ($inventory contains "blue ball") and not ($tried contains "blue ball"))[* The\
+  (set: $hasNowt to false)\
+  (link-reveal: "blue ball")[(set: $tried to it + (a: "blue ball"))\
+    – no, that would be silly].]\
+(if: ($inventory contains "fish food") and not ($tried contains "fish food"))[* The\
+  (set: $hasNowt to false)\
+  (link-reveal: "packet of fish food")[(set: $tried to it + (a: "fish food"))\
+    – you sprinkle some food in the tank,\
+    but while the fish gobble it up gratefully,\
+    none of them seem inclined to fetch the slide for you].]\
+(if: ($inventory contains "model tower") and not ($tried contains "model tower"))[* The\
+  (set: $hasNowt to false)\
+  (link-reveal: "model of a castle tower")[(set: $tried to it + (a: "model tower"))\
+    – plunging the model tower into the tank,\
+    you can just about tickle the gravel with the tip,\
+    but frustratingly the slide remains just out of reach].]\
+(if: ($inventory contains "fish net") and not ($tried contains "fish net"))[* The\
+  (set: $hasNowt to false)\
+  (link-reveal: "long-handled fish net")[(set: $tried to it + (a: "fish net"))\
+    (set: $hasRed to true)\
+    (set: $deck to it + (a: "red slide"))\
+    (set: $fishing to false)\
+    – you dip the net into the tank and after a few clumsy attempts,\
+    manage to scoop the (print: "**red slide**") out of the tank].]\
+$hasNowt[
+  No, you don't have anything that might be useful.
+  
+]{
+  Behind you is the [[wooden table]],
+  and a [[blue door->cellar]] lies to the south.
+}
 
 ::Magenta Room <750,600>
 <style>
@@ -486,5 +621,5 @@ Now all you have to find out where the witch went...
 ::Zebug [startup]
 
 ::Twee2Settings [twee2]
-@story_start_name = 'Start'
+@story_start_name = 'Blue Room'
 
