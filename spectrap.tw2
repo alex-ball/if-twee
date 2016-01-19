@@ -439,9 +439,25 @@ $hasNowt[
   tw-passage {
     color: #6d0c8d;
   }
-</style>(unless: (history:) contains "Magenta Room")[(set: $carriage to (shuffled: "First", "Second", "Third", "Fourth"))]You are in a narrow corridor; the windows on either side are covered up with magenta blinds. The curve of the low ceiling, the vibration of the floor, and the clickety-clack from outside reveal you are in a railway carriage. You can count four compartments on the eastern side; you could look in the [[first->(print: $carriage's 1st) Compartment]], [[second->(print: $carriage's 2nd) Compartment]], [[third->(print: $carriage's 3rd) Compartment]] or [[fourth->(print: $carriage's 4th) Compartment]].
+</style>{
+  (unless: (history:) contains "Magenta Room")[
+    (set: $carriage to (shuffled: "First", "Second", "Third", "Fourth"))
+  ]
+  You are in a narrow corridor;
+  the windows on either side are covered up with magenta blinds.
+  The curve of the low ceiling, the vibration of the floor,
+  and the clickety-clack from outside reveal you are in a railway carriage.
+  You can count four compartments on the eastern side;
+  you could look in the [[first->(print: $carriage's 1st) Compartment]],
+  [[second->(print: $carriage's 2nd) Compartment]],
+  [[third->(print: $carriage's 3rd) Compartment]] or
+  [[fourth->(print: $carriage's 4th) Compartment]].
+}
 
-A [[magenta door->cellar]] lies to the south and a wooden door lies north(click: "wooden door")[, though it is securely locked: you guess this is the last carriage before the engine].
+  A [[magenta door->cellar]] lies to the south\
+  and a wooden door lies north(click: "wooden door")[,\
+  though it is securely locked:\
+  you guess this is the last carriage before the engine].
 
 ::First Compartment <600,600>
 <style>
@@ -451,13 +467,18 @@ A [[magenta door->cellar]] lies to the south and a wooden door lies north(click:
   tw-passage {
     color: #6d0c8d;
   }
-</style>There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+</style>\
+  There are seats on either side of you,\
+  upholstered in a tough lilac fabric,\
+  and a window to the east with the magenta blind drawn down.
 
-On the floor is a circle of a wooden track, on which is a red toy train with blue, green and yellow carriages.
+  On the floor is a circle of a wooden track,\
+  on which is a red toy train with blue, green and yellow carriages.
 
-(click: "toy train")[You amuse yourself running the train around the track for a few moments. After a while you decide this is not going to help you escape, so you stand back up.
+  (click: "toy train")[You amuse yourself running the train around the track for a few moments.\
+  After a while you decide this is not going to help you escape, so you stand back up.
 
-]The [[door to the corridor->Magenta Room]] is to the west.
+  ]The [[door to the corridor->Magenta Room]] is to the west.
 
 ::Second Compartment <600,750>
 <style>
@@ -467,15 +488,28 @@ On the floor is a circle of a wooden track, on which is a red toy train with blu
   tw-passage {
     color: #6d0c8d;
   }
-</style>(unless: (history:) contains "Second Compartment")[(set: $hasPinkBall to false)]There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+</style>{
+  (unless: (history:) contains "Second Compartment")[(set: $hasPinkBall to false)]
+  There are seats on either side of you,
+  upholstered in a tough lilac fabric,
+  and a window to the east with the magenta blind drawn down.
+}
 
-In the luggage racks above the seats, there is a wooden crate and a sports bag.
+  In the luggage racks above the seats, there is a wooden crate and a sports bag.
 
-(click: "wooden crate")[You heave the crate down from the rack and prise open the lid. Inside, packed in ice, is a month's supply of pickled herring, somewhat red in colour – (link: "take one?")[(set: $inventory to it + (a: "red herring"))Taken.] You put the lid back on the crate as best you can and carefully hoist it back to the rack.
+  (click: "wooden crate")[You heave the crate down from the rack and prise open the lid.\
+  Inside, packed in ice, is a month's supply of pickled herring, somewhat red in colour –\
+  (link: "take one?")[(set: $inventory to it + (a: "red herring"))you take one.]\
+  You put the lid back on the crate as best you can and carefully hoist it back to the rack.
 
-](click: "sports bag")[You lift the sports bag from the rack and unzip it. Inside you find a stripy waistcoat, a red bow-tie and a peculiar upside-down-ish pair of glasses.(unless: $hasPinkBall)[ There is also a shiny pink ball rolling around inside – (link: "take it?")[(set: $hasPinkBall to true)(set: $inventory to it + (a: "pink ball"))Taken.]] You zip up the sports bag again and replace it on the rack.
+  ](click: "sports bag")[You lift the sports bag from the rack and unzip it.\
+  Inside you find a stripy waistcoat, a red bow-tie\
+  and a peculiar upside-down-ish pair of glasses.\
+  (unless: $hasPinkBall)[There is also a shiny pink ball rolling around inside –\
+  (link: "take it?")[(set: $hasPinkBall to true)(set: $inventory to it + (a: "pink ball"))you take it.]]\
+  You zip up the sports bag again and replace it on the rack.
 
-]The [[door to the corridor->Magenta Room]] is to the west.
+  ]The [[door to the corridor->Magenta Room]] is to the west.
 
 ::Third Compartment <750,750>
 <style>
@@ -485,15 +519,27 @@ In the luggage racks above the seats, there is a wooden crate and a sports bag.
   tw-passage {
     color: #6d0c8d;
   }
-</style>(unless: (history:) contains "Third Compartment")[(set: $hasPrune to false)]There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+</style>{
+  (unless: (history:) contains "Third Compartment")[(set: $hasPrune to false)]
+  There are seats on either side of you,
+  upholstered in a tough lilac fabric,
+  and a window to the east with the magenta blind drawn down.
+}
 
-In the luggage racks above the seats, there is a large suitcase and a shopping basket.
+  In the luggage racks above the seats, there is a large suitcase and a shopping basket.
 
-(click: "large suitcase")[You heft the suitcase down from the rack and pop it open. Inside is a white surplice, a purple cassock, a golden mitre and stole, and some other items of church clothing. Not your sort of thing at all. You close the suitcase and put it back.
+  (click: "large suitcase")[You heft the suitcase down from the rack and pop it open.\
+  Inside is a white surplice, a purple cassock, a golden mitre and stole,\
+  and some other items of church clothing. Not your sort of thing at all.\
+  You close the suitcase and put it back.
 
-](click: "shopping basket")[You carefully remove the basket from the rack and look inside. $hasPrune[It is empty.](else:)[Rolling around inside is a fresh prune. It is bright purple and looks firm and juicy – (link: "take it?")[(set: $hasPrune to true)(set: $inventory to it + (a: "prune"))Taken].] You pop it back up on the rack.
+  ](click: "shopping basket")[You carefully remove the basket from the rack and look inside.\
+  $hasPrune[It is empty.](else:)[Rolling around inside is a fresh prune.\
+  It is bright purple and looks firm and juicy –\
+  (link: "take it?")[(set: $hasPrune to true)(set: $inventory to it + (a: "prune"))you take it].]\
+  You pop the basket back up on the rack.
 
-]The [[door to the corridor->Magenta Room]] is to the west.
+  ]The [[door to the corridor->Magenta Room]] is to the west.
 
 ::Fourth Compartment <900,750>
 <style>
@@ -503,11 +549,18 @@ In the luggage racks above the seats, there is a large suitcase and a shopping b
   tw-passage {
     color: #6d0c8d;
   }
-</style>There are seats on either side of you, upholstered in a tough lilac fabric, and a window to the east with the magenta blind drawn down.
+</style>\
+  There are seats on either side of you,\
+  upholstered in a tough lilac fabric,\
+  and a window to the east with the magenta blind drawn down.
 
-There is a newspaper on one of the seats. (click: "newspaper")[You flick through for any clues where the witch might escape to next, or how you might escape, but all you can find is a doodle of 15 circles formed into a solid triangle.]
+  There is a newspaper on one of the seats.\
+  (click: "newspaper")[You flick through for any clues\
+  where the witch might escape to next, or how you might escape.\
+  All you can find is a doodle of 15 circles formed into a solid triangle,
+  and a ring around an article on the health benefits of a rainbow diet.]
 
-The [[door to the corridor->Magenta Room]] is to the west.
+  The [[door to the corridor->Magenta Room]] is to the west.
 
 ::Red Room <1050,600>
 <style>
@@ -625,5 +678,5 @@ Now all you have to find out where the witch went...
 ::Zebug [startup]
 
 ::Twee2Settings [twee2]
-@story_start_name = 'Blue Room'
+@story_start_name = 'Magenta Room'
 
