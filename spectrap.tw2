@@ -299,45 +299,49 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
     color: #0c308d;
   }
 </style>{
-  (unless: (history:) contains "wooden table")[
+  (if: (history:) contains "wooden table")[
+    (set: $tableTop to it - $taken)
+  ](else:)[
     (set: $blueItems to (datamap: "blue ball", "shiny blue ball",
       "fish food", "packet of fish food",
       "model tower", "model of a castle tower",
       "fish net", "long-handled fish net"))
     (set: $tableTop to (shuffled: ...(datanames: $blueItems)))
   ]
+  (set: $taken to (a:))
   (if: $tableTop's length is 0)[
     The wooden table is empty.
   ](else-if: $tableTop's length is 1)[
     On the wooden table is a curious object:
     a (link-reveal: $blueItems's ($tableTop's 1st))[,\
+      (set: $taken to it + (a: $tableTop's 1st))\
       (set: $inventory to it + (a: $tableTop's 1st))\
       which you take].
   ](else:)[
     On the wooden table are some curious objects:
     * a (link-reveal: $blueItems's ($tableTop's 1st))[,\
+      (set: $taken to it + (a: $tableTop's 1st))\
       (set: $inventory to it + (a: $tableTop's 1st))\
       which you take];
       
     * a (link-reveal: $blueItems's ($tableTop's 2nd))[,\
+      (set: $taken to it + (a: $tableTop's 2nd))\
       (set: $inventory to it + (a: $tableTop's 2nd))\
       which you take](if: $tableTop's length > 2)[;](else:)[.]
     (if: $tableTop's length > 2)[* a\
       (link-reveal: $blueItems's ($tableTop's 3rd))[,\
+      (set: $taken to it + (a: $tableTop's 3rd))\
       (set: $inventory to it + (a: $tableTop's 3rd))\
       which you take](if: $tableTop's length > 3)[;](else:)[.]\
     ](if: $tableTop's length > 3)[* a\
       (link-reveal: $blueItems's ($tableTop's 4th))[,\
+      (set: $taken to it + (a: $tableTop's 4th))\
       (set: $inventory to it + (a: $tableTop's 4th))\
       which you take].\
     ]\
   ]
-  Behind you is the (link: "fish tank")[\
-  (set: $tableTop to it - $inventory)\
-  (go-to: "fish tank")],
-  and a (link: "blue door")[\
-  (set: $tableTop to it - $inventory)\
-  (go-to: "cellar")] lies to the south.
+  Behind you is the [[fish tank]],
+  and a [[blue door->cellar]] lies to the south.
 }
 
 ::fish tank
