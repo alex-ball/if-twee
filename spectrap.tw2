@@ -747,27 +747,120 @@ A [[red door->cellar]] lies to the south.
   tw-passage {
     color: #8d6d0c;
   }
-</style>(unless: (history:) contains "Yellow Room")[(set: $building to false)(set: $bricks to 50)(set: $model14 to false)(set: $model15 to false)(set: $model16 to false)(set: $model17 to false)(set: $model18 to false)(set: $hasIvoryKey to false)(set: $hasYellowBall to false)]You are in a room that appears to be made out of smooth yellow plastic. The floor is covered in a regular grid of short circular stumps. In one corner is a tiny table made out of small brown and green bricks. In the other is a large yellow cylinder, rounded top and bottom, with a face painted on it in black; in other words, a giant stylised head.
+</style>{
+  (unless: (history:) contains "Yellow Room")[
+    (set: $bricks to 50)
+    (set: $model14 to false)
+    (set: $model15 to false)
+    (set: $model16 to false)
+    (set: $model17 to false)
+    (set: $model18 to false)
+    (set: $hasIvoryKey to false)
+    (set: $hasYellowBall to false)
+  ]
+  You are in a room that appears to be made out of smooth yellow plastic.
+  The floor is covered in a regular grid of short circular stumps.
+  In one corner is a tiny table made out of small brown and green bricks.
+  In the other is a large yellow cylinder, rounded top and bottom,
+  with a face painted on it in black; in other words, a giant stylised head.
+}
 
-$building[In front of you are $bricks bricks and a set of instructions. The instructions tell you how to make five models:
-* A car (14 bricks) – $model14[you have built this model, (link: "break it up?")[(set: $model14 to false)(set: $bricks to it + 14)(go-to: "Yellow Room")]](else:)[(if: $bricks < 14)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model14 to true)(set: $bricks to it - 14)(go-to: "Yellow Room")]]]
-* A van (15 bricks) – $model15[you have built this model, (link: "break it up?")[(set: $model15 to false)(set: $bricks to it + 15)(go-to: "Yellow Room")]](else:)[(if: $bricks < 15)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model15 to true)(set: $bricks to it - 15)(go-to: "Yellow Room")]]]
-* A lorry (16 bricks) – $model16[you have built this model, (link: "break it up?")[(set: $model16 to false)(set: $bricks to it + 16)(go-to: "Yellow Room")]](else:)[(if: $bricks < 16)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model16 to true)(set: $bricks to it - 16)(go-to: "Yellow Room")]]]
-* A carriage (17 bricks) – $model17[you have built this model, (link: "break it up?")[(set: $model17 to false)(set: $bricks to it + 17)(go-to: "Yellow Room")]](else:)[(if: $bricks < 17)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model17 to true)(set: $bricks to it - 17)(go-to: "Yellow Room")]]]
-* A steam engine (18 bricks) – $model18[you have built this model, (link: "break it up?")[(set: $model18 to false)(set: $bricks to it + 18)(go-to: "Yellow Room")]](else:)[(if: $bricks < 18)[but you have run out of bricks.](else:)[(link: "build this model?")[(set: $model18 to true)(set: $bricks to it - 18)(go-to: "Yellow Room")]]]
-(if: $bricks is 0)[It could be your imagination, but it seems like the giant stylised head is positively beaming at you.
+(unless: $hasYellowBall)[\
+  (click: "tiny table")[On the table is a shiny yellow ball –\
+  (link: "take it?")[(set: $hasYellowBall to true)(set: $inventory to it + (a: "yellow ball"))taken.]
 
-](click: "giant stylised head")[(if: ($bricks is 0) and not $hasIvoryKey)[You peer into the head. Even though you definitely emptied it before, it now contains a key that looks like it was made from bone or ivory – (link: "take it?")[(set: $hasIvoryKey to true)(set: $inventory to it + (a: "ivory key"))taken.]](else:)[The head is empty.]
+]](if: ($bricks is 0))[\
+  (click: "giant stylised head")[\
+    (unless: $hasIvoryKey)[\
+      You peer into the head. Even though you definitely emptied it before,\
+      it now contains a key that looks like it was made from bone or ivory –\
+      (link: "take it?")[(set: $hasIvoryKey to true)(set: $inventory to it + (a: "ivory key"))taken.]\
+    ](else:)[The head is empty.]
 
 ]](else:)[(click: "giant stylised head")[It looks like the top might come off the head.
 
-](click: "the top")[You give the top of the head a sharp twist, and it comes loose. You take it off and put it to one side, then peer inside the head. You see a set of instructions and lots of bricks.
+](click: "the top")[You give the top of the head a sharp twist, and it comes loose.\
+  You take it off and put it to one side, then peer inside the head.\
+  You see a set of instructions and lots of bricks.
 
-](click: "lots of bricks")[You count out the bricks and compare them to the instructions. There are enough to (link: "build")[(set: $building to true)(go-to: "Yellow Room")] some but not all of the models.
-
-]](unless: $hasYellowBall)[(click: "tiny table")[On the table is a shiny yellow ball – (link: "take it?")[(set: $hasYellowBall to true)(set: $inventory to it + (a: "yellow ball"))taken.]
+](click: "lots of bricks")[You count out the bricks and compare them to the instructions.\
+  There are enough to [[build]] some but not all of the models.
 
 ]]A [[yellow door->cellar]] lies to the south.
+
+::build
+<style>
+  body {
+    background-color: #fbf1d0;
+  }
+  tw-passage {
+    color: #8d6d0c;
+  }
+</style>\
+  In front of you are $bricks bricks and a set of instructions.\
+  The instructions tell you how to make five models:
+  * A car (14 bricks) – $model14[\
+      you have built this model,\
+      (link: "break it up?")[(set: $model14 to false)(set: $bricks to it + 14)(go-to: "build")]\
+    ](else:)[\
+      (if: $bricks < 14)[\
+        but you have run out of bricks.\
+      ](else:)[\
+        (link: "build this model?")[(set: $model14 to true)(set: $bricks to it - 14)(go-to: "build")]\
+      ]\
+    ]
+  * A van (15 bricks) – $model15[\
+      you have built this model,\
+      (link: "break it up?")[(set: $model15 to false)(set: $bricks to it + 15)(go-to: "build")]\
+    ](else:)[\
+      (if: $bricks < 15)[\
+        but you have run out of bricks.\
+      ](else:)[\
+        (link: "build this model?")[(set: $model15 to true)(set: $bricks to it - 15)(go-to: "build")]\
+      ]\
+    ]
+  * A lorry (16 bricks) – $model16[\
+      you have built this model,\
+      (link: "break it up?")[\
+        (set: $model16 to false)(set: $bricks to it + 16)(go-to: "build")]\
+      ](else:)[\
+        (if: $bricks < 16)[\
+          but you have run out of bricks.\
+        ](else:)[\
+          (link: "build this model?")[(set: $model16 to true)(set: $bricks to it - 16)(go-to: "build")]\
+        ]\
+      ]
+  * A carriage (17 bricks) – $model17[\
+      you have built this model,\
+      (link: "break it up?")[(set: $model17 to false)(set: $bricks to it + 17)(go-to: "build")]\
+    ](else:)[\
+      (if: $bricks < 17)[\
+        but you have run out of bricks.\
+      ](else:)[\
+        (link: "build this model?")[(set: $model17 to true)(set: $bricks to it - 17)(go-to: "build")]\
+      ]\
+    ]
+  * A steam engine (18 bricks) – $model18[\
+      you have built this model,\
+      (link: "break it up?")[(set: $model18 to false)(set: $bricks to it + 18)(go-to: "build")]\
+    ](else:)[\
+      (if: $bricks < 18)[\
+        but you have run out of bricks.\
+      ](else:)[\
+        (link: "build this model?")[(set: $model18 to true)(set: $bricks to it - 18)(go-to: "build")]\
+      ]\
+    ]
+  (if: $bricks is 0)[It could be your imagination,\
+    but it seems like the giant stylised head is positively beaming at you.
+
+    (click: "giant stylised head")[\
+      (unless: $hasIvoryKey)[\
+        You peer into the head. Even though you definitely emptied it before,\
+        it now contains a key that looks like it was made from bone or ivory –\
+        (link: "take it?")[(set: $hasIvoryKey to true)(set: $inventory to it + (a: "ivory key"))taken.]\
+      ](else:)[The head is empty.]
+
+  ]]A [[yellow door->cellar]] lies to the south.
 
 ::Cyan Room <1200,150>
 <style>
@@ -830,8 +923,7 @@ Now all you have to find out where the witch went...
 **Congratulations, you have won.**
 
 ::Zebug [startup]
-(set: $inventory to (a: "red herring", "prune"))
 
 ::Twee2Settings [twee2]
-@story_start_name = 'Red Room'
+@story_start_name = 'Yellow Room'
 
