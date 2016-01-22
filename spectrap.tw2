@@ -570,20 +570,174 @@ $hasNowt[
   tw-passage {
     color: #8d0c2d;
   }
-</style>(unless: (history:) contains "Red Room")[(set: $hasGreen to false)(set: $hasRedBall to false)(set: $frveg to (shuffled: "tomato", "carrot", "banana", "lettuce", "punnet of blueberries", ""))(set: $solution to (a: "tomato", "carrot", "banana", "lettuce", "punnet of blueberries", "prune"))]You are in a dining room decorated with rich ruby-coloured wallpaper. There is a long table in the middle of the room, covered in a crimson velvet tablecloth.
+</style>{
+  (unless: (history:) contains "Red Room")[
+    (set: $hasGreen to false)
+    (set: $foundRedBall to false)
+    (set: $hasRedBall to false)
+    (set: $a to "")
+    (set: $fv to (a: "tomato", "carrot", "banana", "lettuce", "punnet of blueberries"))
+    (set: $frveg to (shuffled: ...$fv, $a))
+    (set: $solution to (a: ...$fv, "prune"))
+  ]
+  You are in a dining room decorated with rich ruby-coloured wallpaper.
+  There is a long table in the middle of the room, covered in a crimson velvet tablecloth,
+  and set as if for a great feast.
+}
 
-On the table is a silver cloche or serving dome and a row of coloured plates:
-* the red plate (if: $frveg's 1st is "")[is empty(set: $swapR to "put the (print: $frveg's 6th) here")](else:)[holds a **(print: $frveg's 1st)**(if: $frveg's 6th is "")[(set: $swapR to "move it to the purple plate")](else:)[(set: $swapR to "swap it with the (print: $frveg's 6th)")]] – you could (if: ($frveg's 1st is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 1st to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapR)[(set: $x to $frveg's 1st)(set: $frveg's 1st to $frveg's 6th)(set: $frveg's 6th to $x)(go-to: "Red Room")].
-* the orange plate (if: $frveg's 2nd is "")[is empty(set: $swapO to "put the (print: $frveg's 1st) here")](else:)[holds a **(print: $frveg's 2nd)**(if: $frveg's 1st is "")[(set: $swapO to "move it to the red plate")](else:)[(set: $swapO to "swap it with the (print: $frveg's 1st)")]] – you could (if: ($frveg's 2nd is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 2nd to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapO)[(set: $x to $frveg's 2nd)(set: $frveg's 2nd to $frveg's 1st)(set: $frveg's 1st to $x)(go-to: "Red Room")].
-* the yellow plate (if: $frveg's 3rd is "")[is empty(set: $swapY to "put the (print: $frveg's 2nd) here")](else:)[holds a **(print: $frveg's 3rd)**(if: $frveg's 2nd is "")[(set: $swapY to "move it to the orange plate")](else:)[(set: $swapY to "swap it with the (print: $frveg's 2nd)")]] – you could (if: ($frveg's 3rd is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 3rd to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapY)[(set: $x to $frveg's 3rd)(set: $frveg's 3rd to $frveg's 2nd)(set: $frveg's 2nd to $x)(go-to: "Red Room")].
-* the green plate (if: $frveg's 4th is "")[is empty(set: $swapG to "put the (print: $frveg's 3rd) here")](else:)[holds a **(print: $frveg's 4th)**(if: $frveg's 3rd is "")[(set: $swapG to "move it to the yellow plate")](else:)[(set: $swapG to "swap it with the (print: $frveg's 3rd)")]] – you could (if: ($frveg's 4th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 4th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapG)[(set: $x to $frveg's 4th)(set: $frveg's 4th to $frveg's 3rd)(set: $frveg's 3rd to $x)(go-to: "Red Room")].
-* the blue plate (if: $frveg's 5th is "")[is empty(set: $swapB to "put the (print: $frveg's 4th) here")](else:)[holds a **(print: $frveg's 5th)**(if: $frveg's 4th is "")[(set: $swapB to "move it to the green plate")](else:)[(set: $swapB to "swap it with the (print: $frveg's 4th)")]] – you could (if: ($frveg's 5th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 5th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapB)[(set: $x to $frveg's 5th)(set: $frveg's 5th to $frveg's 4th)(set: $frveg's 4th to $x)(go-to: "Red Room")].
-* the purple (or maybe indigo or violet) plate (if: $frveg's 6th is "")[is empty(set: $swapP to "put the (print: $frveg's 5th) here")](else:)[holds a **(print: $frveg's 6th)**(if: $frveg's 5th is "")[(set: $swapP to "move it to the blue plate")](else:)[(set: $swapP to "swap it with the (print: $frveg's 5th)")]] – you could (if: ($frveg's 6th is "") and ($inventory contains "prune"))[(link: "put the prune down")[(set: $frveg's 6th to "prune")(set: $inventory to it - (a: "prune"))(go-to: "Red Room")] or] (link: $swapP)[(set: $x to $frveg's 6th)(set: $frveg's 6th to $frveg's 5th)(set: $frveg's 5th to $x)(go-to: "Red Room")].
-(if: $frveg is $solution)[There is a bong, as if from a dinner gong.
+{
+  In the middle of the table is a large silver serving dome,
+  what the people in the business call a cloche.
+  Around it is a selection of colourful fruit and vegetables
+  on a collection of colourful [plates]<plt|.
+}
 
-](click: "silver cloche")[$hasGreen[$hasRedBall[You lift up the cloche and take a peek underneath, but there is nothing there.](else:)[You lift up the cloche again. There is a ripping sound and a thud, and a shiny red ball rolls out from underneath. You inspect the underside of the cloche and discover the ball had been taped there. You guess it must be important and take it.(set: $hasRedBall to true)(set: $inventory to it + (a: "red ball"))]](else-if: $frveg is $solution)[You lift up the cloche and reveal a square of green film in a brass frame – (link: "do you want to take it?")[Taken(set: $hasGreen to true)(set: $deck to it + (a: "green slide"))].](else:)[Try as you might, you cannot lift the cloche; it seems to be stuck to the table.]
+(click: "cloche")[\
+  $hasGreen[\
+    $hasRedBall[\
+      You lift up the cloche and take a peek underneath, but there is nothing there.\
+    ](else:)[\
+      $foundRedBall[\
+        You lift the cloche to find the shiny red ball is still there –\
+        (link: "take it?")[taken.\
+          (set: $hasRedBall to true)\
+          (set: $inventory to it + (a: "red ball"))\
+        ]\
+      ](else:)[\
+        (set: $foundRedBall to true)\
+        You lift up the cloche again.\
+        There is a ripping sound and a thud, and a shiny red ball appears underneath – \
+        (link: "take it?")[taken.\
+          (set: $hasRedBall to true)\
+          (set: $inventory to it + (a: "red ball"))\
+        ] You inspect the underside of the cloche and discover the ball had been taped there.\
+      ]\
+    ]\
+  ](else-if: $frveg is $solution)[\
+    You lift up the cloche and reveal a square of green film in a brass frame –\
+    (link: "take it?")[taken.\
+      (set: $hasGreen to true)\
+      (set: $deck to it + (a: "green slide"))\
+    ]\
+  ](else:)[\
+    Try as you might, you cannot lift the cloche; it seems to be stuck to the table.\
+  ]
 
-]A [[red door->cellar]] lies to the south.
+](if: $a is "")[One of the plates is empty.\
+  This strikes you as wrong somehow, but what can you [do?]<fixme|
+  
+](else-if: ($a is "herring") and ($inventory contains "prune"))[Hmm.\
+  Something still seems fishy about this.\
+  Perhaps the herring wasn't the right thing to put with the fruit and vegetables.\
+  You could try the prune instead.
+  
+]{
+  (if: ($inventory contains "red herring") or ($inventory contains "prune"))[
+    (set: $fix to " You search your pockets and turn out a ")
+    (if: $inventory contains "red herring")[
+      (set: $fix to it + "red herring")
+      (if: $inventory contains "prune")[
+        (set: $fix to it + " and a purple prune.")
+      ](else:)[
+        (set: $fix to it + ".")
+      ]
+    ](else:)[
+      (set: $fix to it + "purple prune.")
+    ]
+    (append: ?fixme)[$fix]
+    (click: "red herring")[
+      (set: $inventory to it - (a: "red herring"))
+      (set: $z to ($frveg.indexOf($a)))
+      (set: $a to "herring")
+      (set:$dummy to $frveg.splice($z,1,$a))
+      (go-to: "filled plate")
+    ]
+    (click: "prune")[
+      (set: $replacing to false)
+      (if: $a is "herring")[(set: $replacing to true)]
+      (set: $inventory to it - (a: "prune"))
+      (set: $z to ($frveg.indexOf($a)))
+      (set: $a to "prune")
+      (set:$dummy to $frveg.splice($z,1,$a))
+      $replacing[(go-to: "replaced plate")](else:)[(go-to: "filled plate")]
+    ]
+  ]
+  (unless: ($a is "") or ($frveg is $solution))[
+    (click: ?plt)[(go-to: "plates")]
+  ]
+}A [[red door->cellar]] lies to the south.
+
+::filled plate
+<style>
+  body {
+    background-color: #fbd0db;
+  }
+  tw-passage {
+    color: #8d0c2d;
+  }
+</style>{
+  You pop it down on the empty plate.
+  Yes, that looks much better.
+}
+
+  You could take a closer look at the [[plates]]\
+  or [[step back->Red Room]] to admire your handiwork.
+
+  A [[red door->cellar]] lies to the south.
+
+::replaced plate
+<style>
+  body {
+    background-color: #fbd0db;
+  }
+  tw-passage {
+    color: #8d0c2d;
+  }
+</style>{
+  You pick up the herring and put it to one side,
+  then pop the prune down on the cleared plate.
+  You have a good feeling about this.
+}
+
+  You could take a closer look at the [[plates]]\
+  or [[step back->Red Room]] to admire your handiwork.
+
+A [[red door->cellar]] lies to the south.
+
+::plates
+<style>
+  body {
+    background-color: #fbd0db;
+  }
+  tw-passage {
+    color: #8d0c2d;
+  }
+</style>\
+  There are six plates arranged in a circle around the cloche.\
+  Each one is a different colour.
+  
+  The red plate holds a **(print: $frveg's 1)**.
+  * (link: "Swap")[(set: $x to $frveg's 1)(set: $frveg's 1 to $frveg's 2)(set: $frveg's 2 to $x)(go-to: "plates")]\
+    what's on the red and orange plates?
+  The orange plate holds a **(print: $frveg's 2)**.
+  * (link: "Swap")[(set: $x to $frveg's 2)(set: $frveg's 2 to $frveg's 3)(set: $frveg's 3 to $x)(go-to: "plates")]\
+    what's on the orange and yellow plates?
+  The yellow plate holds a **(print: $frveg's 3)**.
+  * (link: "Swap")[(set: $x to $frveg's 3)(set: $frveg's 3 to $frveg's 4)(set: $frveg's 4 to $x)(go-to: "plates")]\
+    what's on the yellow and green plates?
+  The green plate holds a **(print: $frveg's 4)**.
+  * (link: "Swap")[(set: $x to $frveg's 4)(set: $frveg's 4 to $frveg's 5)(set: $frveg's 5 to $x)(go-to: "plates")]\
+    what's on the green and blue plates?
+  The blue plate holds a **(print: $frveg's 5)**.
+  * (link: "Swap")[(set: $x to $frveg's 5)(set: $frveg's 5 to $frveg's 6)(set: $frveg's 6 to $x)(go-to: "plates")]\
+    what's on the blue and purple plates?
+  The purple plate holds a **(print: $frveg's 6)**.
+  * (link: "Swap")[(set: $x to $frveg's 6)(set: $frveg's 6 to $frveg's 1)(set: $frveg's 1 to $x)(go-to: "plates")]\
+    what's on the purple and red plates?
+  (if: $frveg is $solution)[Bong! The sound of a dinner gong echoes loudly around the room.
+  
+  ]You could [[step back->Red Room]] to admire the full effect,\
+  or go south through the [[red door->cellar]].
 
 ::Yellow Room <1150,450>
 <style>
@@ -676,7 +830,8 @@ Now all you have to find out where the witch went...
 **Congratulations, you have won.**
 
 ::Zebug [startup]
+(set: $inventory to (a: "red herring", "prune"))
 
 ::Twee2Settings [twee2]
-@story_start_name = 'Magenta Room'
+@story_start_name = 'Red Room'
 
