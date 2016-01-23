@@ -925,26 +925,158 @@ A [[red door->cellar]] lies to the south.
   tw-passage {
     color: #2d8d0c;
   }
-</style>(unless: (history:) contains "Green Room")[(set: $inPlay to (shuffled: "brown", "black"))(set: $potted to (a:))(set: $snooker to (a: "red", "yellow", "green", "brown", "blue", "pink", "black"))(set: $hasKey to false)]You are in a dimly lit room lined with racing green drapes. There is a snooker table in the centre of the room, and on one side a rack containing (unless: $inventory contains "cue")[a cue, ]some chalk, a triangle, a score counter and a rule card.
+</style>{
+  (unless: (history:) contains "Green Room")[
+    (set: $inPlay to (shuffled: "brown", "black"))
+    (set: $potted to (a:))
+    (set: $snooker to (a: "red", "yellow", "green", "brown", "blue", "pink", "black"))
+    (set: $hasKey to false)
+  ]
+  You are in a dimly lit room lined with bottle-green drapes.
+  There is a snooker table in the centre of the room,
+  and on one side a rack containing a rule card, a cue, some chalk,
+  a triangle, and a score counter.
+}
 
-(click: "rule card")[You skim through the rules. You are familiar with most of them but check the potting order, which turns out to be red, yellow, green, brown, blue, pink then black.
+(click: "rule card")[In snooker, you use the cue to hit the cue ball,\
+  so that it hits the other balls and knocks them into the holes round the edge;\
+  this is called potting.\
+  There are lots of rules for how to do this,\
+  and while you remember some of them, you need a reminder of the rest.\
+  Ah yes, there is special order for potting the balls,\
+  which turns out to be red, yellow, green, brown, blue, pink then black.
 
-](click: "a cue")[(set: $inventory to it + (a: "cue"))You pick up the cue and rub some chalk on the tip to make it less slippy. 
+](click: "snooker table")[The table is a standard snooker table covered in green baize.\
+  There are six holes for potting balls into.\
+  You really should be trying to escape,\
+  but maybe a quick game would help, you think.
 
-](click: "snooker table")[The table is a standard snooker table covered in green baize. There are six holes for potting balls into. ]On the table (if: $inPlay's length is 0)[is a solitary ball](else:)[are some coloured balls]: the white cue ball(if: $inPlay's length > 0)[, a (print: $inPlay's 1st) ball](if: $inPlay's length > 1)[, a (print: $inPlay's 2nd) ball](if: $inPlay's length > 2)[, a (print: $inPlay's 3rd) ball](if: $inPlay's length > 3)[, a (print: $inPlay's 4th) ball](if: $inPlay's length > 4)[, a (print: $inPlay's 5th) ball](if: $inPlay's length > 5)[, a (print: $inPlay's 6th) ball](if: $inPlay's length > 6)[, a (print: $inPlay's 7th) ball].
-(if: $potted is $snooker)[(unless: $hasKey)[
-As the last ball drops into the pocket, it makes a strange clunking sound. You delve around inside the pocket and find, among the coloured balls, a steel key. It looks like it might be useful, so you pick it up.(set: $inventory to it + (a: "steel key"))
-]](else:)[\
-(if: $inPlay contains "black")[* You could try (link: "potting the black")[(set: $inPlay to it - (a: "black"))(set: $potted to it + (a: "black"))(go-to: "Green Room")]]\
-(if: $inventory contains "blue ball")[* You could (link: "put the blue ball down")[(set: $inventory to it - (a: "blue ball"))(set: $inPlay to it + (a: "blue"))(go-to: "Green Room")]](else-if: $inPlay contains "blue")[* You could try (link: "potting the blue")[(set: $inPlay to it - (a: "blue"))(set: $potted to it + (a: "blue"))(go-to: "Green Room")]]\
-(if: $inPlay contains "brown")[* You could try (link: "potting the brown")[(set: $inPlay to it - (a: "brown"))(set: $potted to it + (a: "brown"))(go-to: "Green Room")]]\
-(if: $inventory contains "green ball")[* You could (link: "put the green ball down")[(set: $inventory to it - (a: "green ball"))(set: $inPlay to it + (a: "green"))(go-to: "Green Room")]](else-if: $inPlay contains "green")[* You could try (link: "potting the green")[(set: $inPlay to it - (a: "green"))(set: $potted to it + (a: "green"))(go-to: "Green Room")]]\
-(if: $inventory contains "pink ball")[* You could (link: "put the pink ball down")[(set: $inventory to it - (a: "pink ball"))(set: $inPlay to it + (a: "pink"))(go-to: "Green Room")]](else-if: $inPlay contains "pink")[* You could try (link: "potting the pink")[(set: $inPlay to it - (a: "pink"))(set: $potted to it + (a: "pink"))(go-to: "Green Room")]]\
-(if: $inventory contains "red ball")[* You could (link: "put the red ball down")[(set: $inventory to it - (a: "red ball"))(set: $inPlay to it + (a: "red"))(go-to: "Green Room")]](else-if: $inPlay contains "red")[* You could try (link: "potting the red")[(set: $inPlay to it - (a: "red"))(set: $potted to it + (a: "red"))(go-to: "Green Room")]]\
-(if: $inventory contains "yellow ball")[* You could (link: "put the yellow ball down")[(set: $inventory to it - (a: "yellow ball"))(set: $inPlay to it + (a: "yellow"))(go-to: "Green Room")]](else-if: $inPlay contains "yellow")[* You could try (link: "potting the yellow")[(set: $inPlay to it - (a: "yellow"))(set: $potted to it + (a: "yellow"))(go-to: "Green Room")]]\
-(if: $potted's length > 0)[* You could (link: "reset the table")[(set: $inPlay to it + $potted)(set: $potted to (a:))(go-to: "Green Room")]]\
-]
+](click: "a cue")[(set: $inventory to it + (a: "cue"))\
+  You pick up the cue and rub some chalk on the tip to make it less slippy.\
+  You are ready to [[play->snooker]].
+
+]\
 A [[green door->cellar]] lies to the south.
+
+::snooker
+<style>
+  body {
+    background-color: #dbfbd0;
+  }
+  tw-passage {
+    color: #2d8d0c;
+  }
+</style>\
+On the table(if: $inPlay's length is 0)[\
+    is a solitary white cue ball.
+
+  ](else:)[,\
+    as well as the white cue ball,\
+    (if: $inPlay's length is 1)[is a (print: $inPlay's 1st) ball.]\
+    (else:)[are some coloured balls:\
+    a (print: $inPlay's 1st) ball](if: $inPlay's length > 1)[(if: $inPlay's length is 2)[ and](else:)[,]\
+    a (print: $inPlay's 2nd) ball](if: $inPlay's length > 2)[(if: $inPlay's length is 3)[ and](else:)[,]\
+    a (print: $inPlay's 3rd) ball](if: $inPlay's length > 3)[(if: $inPlay's length is 4)[ and](else:)[,]\
+    a (print: $inPlay's 4th) ball](if: $inPlay's length > 4)[(if: $inPlay's length is 5)[ and](else:)[,]\
+    a (print: $inPlay's 5th) ball](if: $inPlay's length > 5)[(if: $inPlay's length is 6)[ and](else:)[,]\
+    a (print: $inPlay's 6th) ball](if: $inPlay's length > 6)[and\
+    a (print: $inPlay's 7th) ball](if: $inPlay's length > 1)[.]\
+    (if: ($inPlay's length + $potted's length) < 7)[Is that [[enough->more balls]]?]
+
+](if: $potted is $snooker)[(unless: $hasKey)[\
+  As the last ball drops into the pocket,\
+  it makes a strange clunking sound.\
+  You delve around inside the pocket and find,\
+  among the coloured balls, a steel key.\
+  It looks like it might be useful, so you pick it up.\
+  (set: $inventory to it + (a: "steel key"))
+
+]](else:)[\
+  (click: " red ball")[(set: $inPlay to it - (a: "red"))(set: $potted to it + (a: "red"))(go-to: "snooker")]\
+  (click: "yellow ball")[(set: $inPlay to it - (a: "yellow"))(set: $potted to it + (a: "yellow"))(go-to: "snooker")]\
+  (click: "green ball")[(set: $inPlay to it - (a: "green"))(set: $potted to it + (a: "green"))(go-to: "snooker")]\
+  (click: "brown ball")[(set: $inPlay to it - (a: "brown"))(set: $potted to it + (a: "brown"))(go-to: "snooker")]\
+  (click: "blue ball")[(set: $inPlay to it - (a: "blue"))(set: $potted to it + (a: "blue"))(go-to: "snooker")]\
+  (click: "pink ball")[(set: $inPlay to it - (a: "pink"))(set: $potted to it + (a: "pink"))(go-to: "snooker")]\
+  (click: "black ball")[(set: $inPlay to it - (a: "black"))(set: $potted to it + (a: "black"))(go-to: "snooker")]\
+  (if: $potted's length > 0)[You have potted\
+    the (print: $potted's 1st) ball](if: $potted's length > 1)[(if: $potted's length is 2)[ and](else:)[,]\
+    the (print: $potted's 2nd) ball](if: $potted's length > 2)[(if: $potted's length is 3)[ and](else:)[,]\
+    the (print: $potted's 3rd) ball](if: $potted's length > 3)[(if: $potted's length is 4)[ and](else:)[,]\
+    the (print: $potted's 4th) ball](if: $potted's length > 4)[(if: $potted's length is 5)[ and](else:)[,]\
+    the (print: $potted's 5th) ball](if: $potted's length > 5)[(if: $potted's length is 6)[ and](else:)[,]\
+    the (print: $potted's 6th) ball](if: $potted's length > 6)[and\
+    the (print: $potted's 7th) ball](if: $potted's length > 0)[.\
+    Doubt niggles in your mind.\
+    Is that right or do you need to\
+    (link: "start again")[(set: $inPlay to it + $potted)(set: $potted to (a:))(go-to: "snooker")]?
+
+]]\
+  The [[rack->Green Room]] stands to the side.\
+  A [[green door->cellar]] lies to the south.
+
+::more balls
+<style>
+  body {
+    background-color: #dbfbd0;
+  }
+  tw-passage {
+    color: #2d8d0c;
+  }
+</style>{
+  (set: $balls to (shuffled: "red ball", "yellow ball", "green ball", "blue ball", "pink ball"))
+  (set: $foundBall to false)
+  You fish around in your pockets for more snooker balls to put on the table.
+  Hmm.
+  (if: $inventory contains (1 of $balls))[
+    (set: $foundBall to true)
+    A (print: 1 of $balls).
+  ]
+  (if: $inventory contains (2 of $balls))[
+    (set: $foundBall to true)
+    A (print: 2 of $balls).
+  ]
+  (if: $inventory contains (3 of $balls))[
+    (set: $foundBall to true)
+    A (print: 3 of $balls).
+  ]
+  (if: $inventory contains (4 of $balls))[
+    (set: $foundBall to true)
+    A (print: 4 of $balls).
+  ]
+  (if: $inventory contains (5 of $balls))[
+    (set: $foundBall to true)
+    A (print: 5 of $balls).
+  ]
+  $foundBall[
+    Will that do?
+  ](else:)[
+    You don't have any on you, which is hardly surprising.
+    Is there any chance you might find some?
+  ]
+  (click: "blue ball")[\
+    (set: $inventory to it - (a: "blue ball"))\
+    (set: $inPlay to it + (a: "blue"))\
+  ]
+  (click: "green ball")[\
+    (set: $inventory to it - (a: "green ball"))\
+    (set: $inPlay to it + (a: "green"))\
+  ]
+  (click: "pink ball")[\
+    (set: $inventory to it - (a: "pink ball"))\
+    (set: $inPlay to it + (a: "pink"))\
+  ]
+  (click: "red ball")[\
+    (set: $inventory to it - (a: "red ball"))\
+    (set: $inPlay to it + (a: "red"))\
+  ]
+  (click: "yellow ball")[\
+    (set: $inventory to it - (a: "yellow ball"))\
+    (set: $inPlay to it + (a: "yellow"))\
+  ]
+}
+
+You survey the [[table->snooker]] again.
 
 ::Escape <600,300>
 The steel key does indeed fit neatly in the lock. Hardly daring to breathe, you turn the key. To your immense relief, there is a loud clunk as the door unlocks. You yank open the door and, pausing only to turn out the light behind you, bound up the stairs.
