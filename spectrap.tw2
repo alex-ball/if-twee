@@ -870,17 +870,50 @@ A [[red door->cellar]] lies to the south.
   tw-passage {
     color: #0c8d6d;
   }
-</style>(unless: (history:) contains "Cyan Room")[(set: $chestOpen to false)(set: $hasGreenBall to false)]You are in a wood-panelled room that looks for all the world like the captain's cabin on an old sailing ship. Indeed, there is a rhythmic creaking coming from the floor, a salty tang to the air, and through the window opposite you can see an endless expanse of blue-green ocean. How this can be possible in a cellar in a forest you don't know, but it's not the strangest thing that has happened to you today.
+</style>{
+  (unless: (history:) contains "Cyan Room")[
+    (set: $chestOpen to false)
+    (set: $hasGreenBall to false)
+  ]
+  You are in a wood-panelled room that looks for all the world
+  like the captain's cabin on an old sailing ship.
+  Indeed, there is a rhythmic creaking coming from the floor,
+  a salty tang to the air, and through the window opposite
+  you can see an endless expanse of blue-green ocean.
+  How this can be possible in a cellar in a forest you don't know,
+  but it's not the strangest thing that has happened to you today.
+}
 
-A large desk, topped with turquoise leather and bounded by a brass rail, stands before you, and $chestOpen[an open](else:)[a closed] chest lies on the floor to one side.
+{
+  A large desk, topped with turquoise leather and bounded by a brass rail,
+  stands before you, and $chestOpen[an open](else:)[a closed] chest
+  lies on the floor to one side.
+}
 
-(click: "closed chest")[The chest is made of oak and bound with iron bands. In the front is a lock panelled with bone or ivory. (if: $inventory contains "ivory key")[The ivory key you found looks like it might fit the lock.
+(click: "closed chest")[The chest is made of oak and bound with iron bands.\
+  In the front is a lock panelled with bone or ivory.\
+  (if: $inventory contains "ivory key")[\
+    The ivory key you found looks like it might fit the lock.\
+  ](else:)[\
+    You do not have a key that would fit.\
+  ]
 
-](else:)[You do not have a key that would fit.
+](click: "open chest")[\
+  The chest is made of oak and bound with iron bands. $hasGreenBall[\
+    It is empty.\
+  ](else:)[\
+    It is empty except for a shiny green ball –\
+    (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]\
+  ]
 
-](click: "ivory key")[You turn the ivory key in the lock and it turns easily. There is a quiet click. You open the lid. (set: $chestOpen to true)$hasGreenBall[The chest is empty.](else:)[The chest is empty except for a shiny green ball – (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]]]
-
-](click: "open chest")[The chest is made of oak and bound with iron bands. $hasGreenBall[It is empty.](else:)[It is empty except for a shiny green ball – (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]]
+](click: "ivory key")[You turn the ivory key in the lock and it turns easily.\
+  There is a quiet click. You open the lid.\
+  (set: $chestOpen to true)$hasGreenBall[\
+    The chest is empty.\
+  ](else:)[\
+    The chest is empty except for a shiny green ball –\
+    (link: "take it?")[(set: $hasGreenBall to true)(set: $inventory to it + (a: "green ball"))taken.]\
+  ]
 
 ]A [[cyan door->cellar]] lies to the south.
 
