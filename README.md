@@ -18,5 +18,8 @@ Graham Nelson's [*Curses!*](http://ifdb.tads.org/viewgame?id=plvzam05bmz3enh8) a
 Adam Cadre's [*Photopia*](http://ifdb.tads.org/viewgame?id=ju778uv5xaswnlpl),
 even though this game is nothing at all like either of them.
 
-  * You can [play it online](https://alexball.me.uk/if/spectrap/).
-  * The source file is `spectrap.tw2`.
+I wrote this game using Twine 2 in late December 2015 and rewrote it with
+Twee2 in January 2016.
+
+  * [Play it online](https://alexball.me.uk/if/spectrap/)
+  * [View the source file](spectrap.tw2)
