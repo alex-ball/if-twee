@@ -55,7 +55,9 @@ The Spectrap
   The door is plain but solid.
   The handle is made of chunky steel;
   the steel door plate below contains an empty keyhole.
-  You turn the handle and pull with all your might but the door does not budge in the slightest.
+  (unless: (history:) contains "grey door")[
+    You turn the handle and pull with all your might but the door does not budge in the slightest.
+  ]
 }
 
 (if: $inventory contains "steel key")[{
@@ -168,9 +170,11 @@ Behind you is the [[cupboard]] and to the south is the [[grey door]].
   you free the blue slide and pick it up.\
   (set: $hasBlue to true)(set: $deck to it + (a: "blue slide"))
 
-]Behind you is the [[projector]],\
-to the south is the [[grey door]],\
-and to the north the odd-looking [[$colour door]].
+]{
+  Behind you is the [[projector]],
+  to the south is the [[grey door]],
+  and to the north the odd-looking [[$colour door]].
+}
 
 ::white door
 {
@@ -179,7 +183,7 @@ and to the north the odd-looking [[$colour door]].
   though you haven't the faintest idea what they mean.
   $projectorIsOn[The light from the projector makes the paint crackle
   and sparkle wherever it touches.]
-}t
+}
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
@@ -207,7 +211,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   (else:)[
     The door is now a magnificent shade of magenta.
     Before [[passing through it->Magenta Room]],
-    you notice that a different set of magical symbols are glowing;
+    you notice that some different magical symbols are glowing;
     these ones seem to form a box on wheels.
   ]
 }
@@ -220,7 +224,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   (else:)[
     The door is now a ravishing shade of red.
     Before [[passing through it->Red Room]],
-    you notice that a different set of magical symbols are glowing;
+    you notice that some different magical symbols are glowing;
     these ones seem to sketch out a knife, fork, and plate.
   ]
 }
@@ -233,7 +237,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   (else:)[
     The door is now a yummy shade of yellow.
     Before [[passing through it->Yellow Room]],
-    you notice that a different set of magical symbols are glowing;
+    you notice that some different magical symbols are glowing;
     these ones join up to form a bobbly brick.
   ]
 }
@@ -246,7 +250,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   (else:)[
     The door is now a splendid shade of cyan.
     Before [[passing through it->Cyan Room]],
-    you notice that a different set of magical symbols are glowing;
+    you notice that some different magical symbols are glowing;
     these ones look like a series of wavy lines.
   ]
 }
@@ -259,7 +263,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   (else:)[
     The door is now a gorgeous shade of green.
     Before [[passing through it->Green Room]],
-    you notice that a different set of magical symbols are glowing:
+    you notice that some different magical symbols are glowing:
     a triangle filled with fifteen circles.
   ]
 }
@@ -395,8 +399,7 @@ $fishing[(go-to: "fishing")]\
   }
 </style>{
   (unless: (history:) contains "fishing")[(set: $tried to (a:))(set: $hasNowt to true)]
-  At the bottom of the tank is a red film slide partially buried in the gravel. 
-  You can't reach it since the glass walls of the tank are too high.
+  You can't reach the red film slide since the glass walls of the tank are too high.
   You check your pockets for something to help.
 }
 (if: ($inventory contains "blue ball") and not ($tried contains "blue ball"))[* The\
@@ -938,6 +941,15 @@ A [[red door->cellar]] lies to the south.
   a triangle, and a score counter.
 }
 
+(if: $potted is $snooker)[\
+(click: "snooker table")[The table is a standard snooker table covered in green baize.\
+  There are six holes for potting balls into.\
+  (unless: $hasKey)[Inside one of the pockets is a steel key –\
+    (link: "take it?")[(set: $inventory to it + (a: "steel key"))\
+    (set: $hasKey to true)taken.]\
+  ]
+
+]](else:)[\
 (click: "rule card")[In snooker, you use the cue to hit the cue ball,\
   so that it hits the other balls and knocks them into the holes round the edge;\
   this is called potting.\
@@ -948,14 +960,14 @@ A [[red door->cellar]] lies to the south.
 
 ](click: "snooker table")[The table is a standard snooker table covered in green baize.\
   There are six holes for potting balls into.\
-  You really should be trying to escape,\
-  but maybe a quick game would help, you think.
+  You really should be trying to find a way to escape,\
+  but maybe a quick game would help you to think of one.
 
 ](click: "a cue")[(set: $inventory to it + (a: "cue"))\
   You pick up the cue and rub some chalk on the tip to make it less slippy.\
   You are ready to [[play->snooker]].
 
-]\
+]]\
 A [[green door->cellar]] lies to the south.
 
 ::snooker
@@ -979,7 +991,7 @@ On the table(if: $inPlay's length is 0)[\
     a (print: $inPlay's 3rd) ball](if: $inPlay's length > 3)[(if: $inPlay's length is 4)[ and](else:)[,]\
     a (print: $inPlay's 4th) ball](if: $inPlay's length > 4)[(if: $inPlay's length is 5)[ and](else:)[,]\
     a (print: $inPlay's 5th) ball](if: $inPlay's length > 5)[(if: $inPlay's length is 6)[ and](else:)[,]\
-    a (print: $inPlay's 6th) ball](if: $inPlay's length > 6)[and\
+    a (print: $inPlay's 6th) ball](if: $inPlay's length > 6)[ and\
     a (print: $inPlay's 7th) ball](if: $inPlay's length > 1)[.]\
     (if: ($inPlay's length + $potted's length) < 7)[Is that [[enough->more balls]]?]
 
@@ -987,9 +999,9 @@ On the table(if: $inPlay's length is 0)[\
   As the last ball drops into the pocket,\
   it makes a strange clunking sound.\
   You delve around inside the pocket and find,\
-  among the coloured balls, a steel key.\
-  It looks like it might be useful, so you pick it up.\
-  (set: $inventory to it + (a: "steel key"))
+  among the coloured balls, a steel key –\
+  (link: "take it?")[(set: $inventory to it + (a: "steel key"))\
+  (set: $hasKey to true)taken.]
 
 ]](else:)[\
   (click: " red ball")[(set: $inPlay to it - (a: "red"))(set: $potted to it + (a: "red"))(go-to: "snooker")]\
