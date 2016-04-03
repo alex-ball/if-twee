@@ -57,11 +57,17 @@ The Spectrap
   the steel door plate below contains an empty keyhole.
   (unless: (history:) contains "grey door")[
     You turn the handle and pull with all your might but the door does not budge in the slightest.
+    (set: $triedIvory to false)
   ]
 }
 
 (if: $inventory contains "steel key")[{
   The [[steel key->Escape]] you found looks like it might fit the keyhole.
+}](else-if: $inventory contains "ivory key")[{
+  You fish out the ivory key from your pocket and try it in the lock.
+  (unless: $triedIvory)[It rattles around but does not catch.(set: $triedIvory to true)]
+  (else:)[Again, no luck. This is not the right key.]
+  It looks like you will be stuck in this [[cellar]] a while longer.
 }](else:)[{
   There is no way you are escaping this [[cellar]]
   unless you can find a way to unlock the door.
