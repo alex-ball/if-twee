@@ -1025,9 +1025,10 @@ On the table(if: $inPlay's length is 0)[\
     the (print: $potted's 5th) ball](if: $potted's length > 5)[(if: $potted's length is 6)[ and](else:)[,]\
     the (print: $potted's 6th) ball](if: $potted's length > 6)[and\
     the (print: $potted's 7th) ball](if: $potted's length > 0)[.\
-    Doubt niggles in your mind.\
-    Is that right or do you need to\
-    (link: "start again")[(set: $inPlay to it + $potted)(set: $potted to (a:))(go-to: "snooker")]?
+    You revel in your excellent snooker skills,\
+    though of course you can always\
+    (link: "start again")[(set: $inPlay to it + $potted)(set: $potted to (a:))(go-to: "snooker")]\
+    if you need to.
 
 ]]\
   The [[rack->Green Room]] stands to the side.\
