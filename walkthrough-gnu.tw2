@@ -1,0 +1,112 @@
+::StoryIFID[twee2]
+Twee2::build_config.story_ifid = "626caeda-a9b3-4e62-acb8-b405a0b05f3e"
+
+::StoryTitle
+Walkthrough for 'Gnu in the Zoo'
+
+::Start [haml]
+%h1
+  Walkthrough for ‘Gnu in the Zoo’
+%p
+  Rather than being a turn-by-turn solution for the game ‘
+  %a{:href => "http://alexball.me.uk/if/gnu"}> Gnu in the Zoo
+  ’, this walkthrough will keep you on the right track \
+  while still giving you a chance to work things out for yourself.
+%p
+  This is also a chance for me to explain some of the symbolism, \
+  but if you're not interested you don't have to read it.
+%p
+  If you have made it partway through the game then got stuck, \
+  you can skip to right section via the [[index]]. \
+  Otherwise, let's start at the beginning, in [[Your Stall]]
+
+:: Your Stall [haml]
+%p
+  As the name of the game suggests, you are a gnu in a zoo, \
+  but you wish you weren't.
+%p
+  There is not much to do here, so get exploring! \
+  You can go [[west->Affero's Stall]] or [[south->Gnu Enclosure Entrance]].
+%ul
+  %li
+    %p (link-reveal: "Will I need to save every five minutes?")[
+    %p
+      I tried to make the game polite about losing moves, \
+      so you can safely try things out and undo if it all goes horribly wrong. \
+      There is one exception, and that is the time limit. \
+      As a kind of nod to realism, \
+      your character wakes up at midnight and has six in-game hours to escape. \
+      You get warnings after four hours and five hours respectively. \
+      This means, in practice, there is no necessity to save your progress at first, \
+      but if the zoo starts waking up you should start saving, \
+      and trying to make progress in the fewest number of moves.
+      ]
+  %li
+    %p (link-reveal: "What's all this about Lee and the stallman?")[
+    %p
+      Richard Stallman founded the GNU Project in 1983 to develop a free-as-in-speech computing platform. \
+      Their main goal within that was to create an operating system similar to UNIX. \
+      The most intricate problem to solve was writing a kernel, \
+      being the bit of the software that directly talks to the hardware. \
+      Their kernel is called GNU Hurd and they are still working on it, \
+      so in the meantime they mostly use the Linux kernel instead. \
+      Linux is named after Linus Torvalds, who pronounces it ‘Leenooks’.
+    %p
+      The allegory here is not great so I don't push it.
+      ]
+  %li
+    %p (link-reveal: "What does the point-of-view gnu represent?")[
+    %p
+      The underlying principle here is that all the animals in the zoo represent software licences. \
+      You represent the GNU General Public Licence (GPL) v3. \
+      Some other licences are compatible with the GPL, \
+      which is to say that code with that licence can be combined with GPL code \
+      and released under the GPL; in other words, they can be turned into GPL. \
+      Others aren't, and can't. The importance of this will soon become clear.
+      ]
+  %li
+    %p (link-reveal: "Where should I go next?")[
+    %p I recommend going [[west->Affero's Stall]].]
+
+::Affero's Stall [haml]
+%p
+  You first encounter Affero the Gnu in the stall next to yours. \
+  Examine everything.
+%ul
+  %li
+    %p (link-reveal: "What do I have to do here?")[
+    %p
+      The description of Affero tells you that you want/need her to follow you.
+    %p (link-reveal: "How do I make that happen?")[
+    %p
+      The incantation you need is ‘AFFERO, FOLLOW ME’.
+      ]]
+  %li
+    %p (link-reveal: "What does Affero represent?")[
+    %p
+      The Affero General Public Licence (AGPL) is another GNU licence, \
+      hence another gnu. \
+      While the regular GPL assumes the software will be compiled into a locally running application, \
+      the AGPL assumes that users will interact with it over the Web.
+      ]
+%p
+  Once you have done everything you need to, \
+  [[escape the Gnu Enclosure->Gnu Enclosure Entrance]] by going east then south.
+
+::Gnu Enclosure Entrance [haml]
+%p
+  Outside the Gnu Enclosure is a crossroads. \
+  Hopefully you won't need to re-enter [[Your Stall]], \
+  leaving [[east->Elephant Enclosure]], \
+  [[west->Lion Enclosure]] \
+  and [[south->Riverside]].
+%ul
+  %li
+    %p (link-reveal: "Where should I go next?")[
+    %p I recommend going [[south->Riverside]].]
+  
+
+::index [haml]
+
+::Twee2Settings [twee2]
+@story_start_name = 'Your Stall'
