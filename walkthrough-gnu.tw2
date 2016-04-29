@@ -1,4 +1,4 @@
-::StoryIFID[twee2]
+::StoryIFID [twee2]
 Twee2::build_config.story_ifid = "626caeda-a9b3-4e62-acb8-b405a0b05f3e"
 
 ::StoryTitle
@@ -9,7 +9,7 @@ Walkthrough for 'Gnu in the Zoo'
   Walkthrough for ‘Gnu in the Zoo’
 %p
   Rather than being a turn-by-turn solution for the game ‘
-  %a{:href => "http://alexball.me.uk/if/gnu"}> Gnu in the Zoo
+  %a{:href => "http://alexball.me.uk/if/gnu", :target => "_blank"}> Gnu in the Zoo
   ’, this walkthrough will keep you on the right track \
   while still giving you a chance to work things out for yourself.
 %p
@@ -17,8 +17,8 @@ Walkthrough for 'Gnu in the Zoo'
   but if you're not interested you don't have to read it.
 %p
   If you have made it partway through the game then got stuck, \
-  you can skip to right section via the [[index]]. \
-  Otherwise, let's start at the beginning, in [[Your Stall]]
+  you can skip to right section via the [[Index]]. \
+  Otherwise, let's start at the beginning, in [[Your Stall]].
 
 :: Your Stall [haml]
 %p
@@ -96,17 +96,88 @@ Walkthrough for 'Gnu in the Zoo'
 ::Gnu Enclosure Entrance [haml]
 %p
   Outside the Gnu Enclosure is a crossroads. \
-  Hopefully you won't need to re-enter [[Your Stall]], \
-  leaving [[east->Elephant Enclosure]], \
+  (if: (history:) contains "Affero's Stall")[\
+  You have the choice of going\
+  ](else:)[\
+  If you think you might have missed something, you can re-enter [[Your Stall]], \
+  otherwise you should head\
+  ] [[east->Elephant Enclosure]], \
   [[west->Lion Enclosure]] \
-  and [[south->Riverside]].
+  or [[south->Riverside]]. Enjoy the scenery.
 %ul
   %li
     %p (link-reveal: "Where should I go next?")[
-    %p I recommend going [[south->Riverside]].]
-  
+    %p I recommend going [[south->Riverside]].]  
 
-::index [haml]
+::Riverside [haml]
+%p
+  In the Riverside area is a very important artifact. \
+  You will know it when you find it.
+%p
+  Once you have, you can \
+  (if: (history:) contains "Elephant Enclosure")[\
+  revisit the [[Elephant Enclosure]]\
+  ](else:)[\
+  go [[north-then-east->Elephant Enclosure]]\
+  ], \
+  (if: (history:) contains "Lion Enclosure")[\
+  revisit the [[Lion Enclosure]]\
+  ](else:)[\
+  go [[north-then-west->Lion Enclosure]]\
+  ], \
+  or go [[east->Reptile House]], \
+  [[west->Devil Enclosure]], or \
+  [[south->Lakeside]].
+%ul
+  %li
+    %p (link-reveal: "Where should I go next?")[
+    %p
+      I recommend going north again and exploring the east and west ends of the path. \
+      If you have done that to your satisfaction, \
+      the most logical order is to then explore south, east then west, \
+      but the most efficient order is west, east then south.\
+      ]
 
+::Elephant Enclosure [haml]
+
+::Lion Enclosure [haml]
+
+::Devil Enclosure [haml]
+
+::Reptile House [haml]
+
+::Lakeside [haml]
+
+::Index [haml]
+%ul
+  %li [[Your Stall]]
+  %li [[Affero's Stall]]
+  %li [[Gnu Enclosure Entrance]]
+  %li [[Riverside]]
+  %li [[Elephant Enclosure]]
+  %li [[Lion Enclosure]]
+  %li [[Devil Enclosure]]
+  %li [[Reptile House]]
+  %li [[Lakeside]]
+
+::footer [footer haml]
+%hr
+%p
+  %small<
+    [[Index]] | \
+    (link:"Save progress")[(if:(save-game:"Slot A"))[Progress saved!](else: )[Sorry, I couldn't save your progress.]] \
+    (if: (saved-games:) contains "Slot A")[| (link: "Load game")[(load-game:"Slot A")]] | { }
+    %a{:href => "http://alexball.me.uk/if/gnu", :target => "_blank"} Revisit game
+
+::Stylesheet [stylesheet]
+tw-passage a {
+  color: #4169E1;
+  font-weight: 700;
+  text-decoration: none;
+}
+tw-passage a:hover {
+  color: #00bfff;
+}
+    
 ::Twee2Settings [twee2]
-@story_start_name = 'Your Stall'
+@story_start_name = 'Start'
