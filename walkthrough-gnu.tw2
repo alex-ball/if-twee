@@ -134,11 +134,37 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       I recommend going north again and exploring the east and west ends of the path. \
       If you have done that to your satisfaction, \
-      the most logical order is to then explore south, east then west, \
-      but the most efficient order is west, east then south.\
+      the most *logical* order is to then explore south, east, then west, \
+      but the most *efficient* order is west, east, then south.\
       ]
 
 ::Elephant Enclosure [haml]
+%p
+  Here you meet Vincent the Elephant. \
+  There is one small thing you can do here before going back \
+  [[west->Gnu Enclosure Entrance]].
+%ul
+  %li
+    %p (link-reveal: "I give up. What is it I'm supposed to do here?")[
+    %p
+      The game's help text tells you can only do so much for some residents. \
+      This is one of those times. \
+      For full marks, unlock the enclosure and walk away \
+      (you will need the right key).
+    %p
+      For a complete experience, \
+      try waking Vincent, then immediately undo. \
+      ]
+  %li
+    %p (link-reveal: "What does Vincent represent?")[
+    %p
+      Vincent represents the PHP licence. \
+      Since the licence includes restrictions on using the name 'PHP' in derived products, \
+      it cannot be converted to GPL, hence you cannot turn Vincent into a gnu.
+    %p
+      The imagery comes from the fact that the mascot of PHP is the <a href="http://php.net/elephpant.php">ElePHPant</a>, \
+      which was designed by Vincent Pontier. \
+      ]
 
 ::Lion Enclosure [haml]
 
