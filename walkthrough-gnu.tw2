@@ -196,6 +196,36 @@ Walkthrough for 'Gnu in the Zoo'
       ]
 
 ::Devil Enclosure [haml]
+%p
+  This is the home of Beastie the Tasmanian Devil. \
+  You have a potential recruit here, but you have a few things to do first.
+%ul
+  %li
+    %p (link-reveal: "What do I have to do here?")[
+    %p
+      After unlocking the enclosure (with the right key) and entering, \
+      you need to provide some medical attention. \
+      You see (link-reveal: "what's wrong with Beastie?")[
+    %p
+      Pull out the claws, and then touch him as if to give him a comforting pat.
+    %p
+      (link: "What next?")[Recruit Beastie to your herd by asking him to follow you.] \
+      ]]
+  %li
+    %p (link-reveal: "What does Beastie represent?")[
+    %p
+      The mascot of BSD-based operating system is a little red daemon \
+      called <a href="https://en.wikipedia.org/wiki/BSD_Daemon">Beastie</a>; \
+      here I've transformed him into a Tasmanian Devil.
+    %p
+      When you first meet him, he represents the original (4-clause) BSD licence. \
+      This licence cannot be converted to the GPL because of its advertising clause. \
+      Removing it results in the Modified (3-clause) BSD licence, \
+      which *can* be converted to the GPL. \
+      Hence you must mollify Beastie before you can turn him into a gnu.
+      ]
+%p
+  When you've finished, return [[west->Riverside]].
 
 ::Reptile House [haml]
 
