@@ -167,6 +167,33 @@ Walkthrough for 'Gnu in the Zoo'
       ]
 
 ::Lion Enclosure [haml]
+%p
+  Here you meet Tex the Lion. \
+  There is one small thing you can do here before going back \
+  [[east->Gnu Enclosure Entrance]].
+%ul
+  %li
+    %p (link-reveal: "I give up. What is it I'm supposed to do here?")[
+    %p
+      The game's help text tells you can only do so much for some residents. \
+      This is one of those times. \
+      For full marks, unlock the enclosure and walk away \
+      (you will need the right key).
+    %p
+      For a complete experience, \
+      open the enclosure gate, then immediately undo. \
+      ]
+  %li
+    %p (link-reveal: "What does Tex represent?")[
+    %p
+      Tex represents the LaTeX Project Public Licence. \
+      It prevents modified files being released under the same name; \
+      this means it cannot be converted to GPL, hence you cannot turn Tex into a gnu.
+    %p
+      LaTeX is a macro package that makes the TeX typesetting system easier to work with. \
+      The <a href="https://www.ctan.org/lion/">mascot for TeX</a> is a lion that was drawn by Duane Bibby \
+      and used both for Donald Knuth's *TeXbook* and Leslie Lamport's *LaTeX book*. \
+      ]
 
 ::Devil Enclosure [haml]
 
