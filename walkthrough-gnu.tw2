@@ -245,7 +245,7 @@ Walkthrough for 'Gnu in the Zoo'
   %li
     %p (link-reveal: "What's that?")[
     %p
-      Just unlock the tank and walk away. \
+      Just unlock the tank (with the right key) and walk away. \
       Mo is not dangerous but you can't recruit her. \
       ]
   %li
@@ -266,9 +266,29 @@ Walkthrough for 'Gnu in the Zoo'
       such as Firefox and SeaMonkey. \
       ]]
 %p
-  (link-reveal: "The south end")[ \
-  contains the tank that houses Odi the Python.
-  ]
+  (link-reveal: "The south end")[ contains the tank that houses Odi the Python. \
+  You can do some recruiting here.
+%ul
+  %li
+    %p (link-reveal: "What do I have to do here?")[
+    %p
+      Unlock the tank (with the right key). \
+      Touch Odi then ask her to follow you. \
+      ]
+  %li
+    %p (link-reveal: "What does Odi represent?")[
+    %p
+      Odi represents the licence used by Python 2.1.1 and newer,
+      which can be converted to the GPL. \
+      (The licence used by Python 1.6b1–2.0 and 2.1 specified a jurisdiction \
+      and could not be converted to the GPL, \
+      but we overlook that aberration.)
+    %p
+      Before the Python programming language had its current \
+      plus-shaped logo formed of two abstract snakes, \
+      its logo was a cute cartoon snake called \
+      <a href="https://web.archive.org/web/20030105154824/http://python.org/wiki/img/Odi.jpg">Odi</a>.\
+      ]]
 %p
   When you've finished, exit east from the [[north end->Riverside]] \
   or the [[south end->Lakeside]].
