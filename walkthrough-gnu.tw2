@@ -235,6 +235,43 @@ Walkthrough for 'Gnu in the Zoo'
   When you've finished, return [[west->Riverside]].
 
 ::Reptile House [haml]
+%p
+  There are two 'rooms' in the Reptile House, a north end and a south end. \
+  Each contains an animal with which you can interact.
+%p
+  (link-reveal: "The north end")[ contains the tank that houses Mo the Gecko. \
+  There is only one thing you need to do here.
+%ul
+  %li
+    %p (link-reveal: "What's that?")[
+    %p
+      Just unlock the tank and walk away. \
+      Mo is not dangerous but you can't recruit her. \
+      ]
+  %li
+    %p (link-reveal: "What does Mo represent?")[
+    %p
+      Mo represents the Mozilla Public Licence version 1.1. \
+      There are some restrictions that mean it can't be converted to the GPL, \
+      hence Mo cannot be turned into a gnu. \
+      In 2012 (after I wrote the game), version 2 of the Mozilla Public Licence came out, \
+      which can be converted to the GPL.
+    %p
+      The <a href="https://en.wikipedia.org/wiki/Mozilla_(mascot)">mascot \
+      for the Mozilla Foundation</a> is, unsurprisingly, \
+      a Tyrannasaurus Rex inspired by Godzilla. \
+      As this would be out of place in a zoo, \
+      I decided to refer instead to Gecko, \
+      the rendering engine used in Mozilla browsers \
+      such as Firefox and SeaMonkey. \
+      ]]
+%p
+  (link-reveal: "The south end")[ \
+  contains the tank that houses Odi the Python.
+  ]
+%p
+  When you've finished, exit east from the [[north end->Riverside]] \
+  or the [[south end->Lakeside]].
 
 ::Lakeside [haml]
 
