@@ -61,7 +61,7 @@ Walkthrough for 'Gnu in the Zoo'
       You represent the GNU General Public Licence (GPL) v3. \
       Some other licences are compatible with the GPL, \
       which is to say that code with that licence can be combined with GPL code \
-      and released under the GPL; in other words, they can be turned into GPL. \
+      and released under the GPL; in other words, they can be turned into the GPL. \
       Others aren't, and can't. The importance of this will soon become clear.
       ]
   %li
@@ -113,6 +113,13 @@ Walkthrough for 'Gnu in the Zoo'
 %p
   In the Riverside area is a very important artifact. \
   You will know it when you find it.
+%ul
+  %li
+    %p (link-reveal: "Could you be more specific?")[
+    %p
+      Yes. Enter the hut and pick up the keys. \
+      Examine them for clues about what they unlock.
+      ]
 %p
   Once you have, you can \
   (if: (history:) contains "Elephant Enclosure")[\
@@ -160,7 +167,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       Vincent represents the PHP licence. \
       Since the licence includes restrictions on using the name 'PHP' in derived products, \
-      it cannot be converted to GPL, hence you cannot turn Vincent into a gnu.
+      it cannot be converted to the GPL, hence you cannot turn Vincent into a gnu.
     %p
       The imagery comes from the fact that the mascot of PHP is the <a href="http://php.net/elephpant.php">ElePHPant</a>, \
       which was designed by Vincent Pontier. \
@@ -188,7 +195,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       Tex represents the LaTeX Project Public Licence. \
       It prevents modified files being released under the same name; \
-      this means it cannot be converted to GPL, hence you cannot turn Tex into a gnu.
+      this means it cannot be converted to the GPL, hence you cannot turn Tex into a gnu.
     %p
       LaTeX is a macro package that makes the TeX typesetting system easier to work with. \
       The <a href="https://www.ctan.org/lion/">mascot for TeX</a> is a lion that was drawn by Duane Bibby \
