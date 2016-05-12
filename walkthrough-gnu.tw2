@@ -294,6 +294,89 @@ Walkthrough for 'Gnu in the Zoo'
   or the [[south end->Lakeside]].
 
 ::Lakeside [haml]
+%p
+  Here you meet Tabby the Cat, asleep on a park bench. \
+  After Affero, she is the easiest zoo resident to recruit.
+%ul
+  %li
+    %p (link-reveal: "How do I do that?")[
+    %p
+      Well, she's asleep, so the very first thing you have to do \
+      is wake her up. You can probably work out the rest.\
+      ]
+  %li
+    %p (link-reveal: "What does Tabby represent?")[
+    %p
+      Tabby represents the \
+      <a href="https://en.wikipedia.org/wiki/File:Sleepycat_logo.svg">Sleepycat Software</a> \
+      Product Licence, \
+      known more generically as the Berkeley Database Licence, \
+      which can be converted to the GPL. \
+      The name is a vague play on tab-separated format \
+      as a way of representing data.\
+      ]
+%p
+  After that, you can head back [[north->Riverside]], \
+  east to the [[Reptile House]], \
+  [[west->Storage Area]], or \
+  [[south->Main Concourse]]
+%ul
+  %li
+    %p (link-reveal: "Where should I go next?")[
+    %p
+      If you have three or fewer gnus in your herd, \
+      head back north or east. \
+      If you have four, explore west then south.
+      ]
+
+::Storage Area [haml]
+%p
+  There are exactly three things you have to do here.
+%ol
+  %li
+    %p Examine everything.
+  %li
+    %p
+      Establish whether you can catch Glenda the Rabbit, \
+      but don't waste too many moves on it.
+  %li
+    %p (link-reveal: "Guess what Glenda represents.")[
+    %p
+      If you were thinking anything naughty, then shame on you. \
+      <a href="https://en.wikipedia.org/wiki/File:Plan9bunnysmblack.jpg">Glenda</a>, \
+      otherwise known as the Plan 9 bunny, \
+      is the mascot of the Unix-like operating system Plan 9 from Bell Labs. \
+      Here she represents the Lucent Public Licence, \
+      used for Plan 9 in 2003; \
+      it is a free software licence but since it specifies a jurisdiction \
+      it cannot be converted to the GPL.
+      ]
+%p
+  When you've had enough, head back [[east->Lakeside]].
+
+::Main Concourse [haml]
+%p
+  There's nothing to do here except enjoy the scenery. \
+  If you spotted the clock, I can only apologise. \
+  When I put that in, I realised I had to put in a time limit \
+  because at some point the visitors would show up. \
+  So you have until 6 a.m. to escape. \
+  There is a bonus point in it for you if you get out by 4 a.m.
+%p
+  You can go [[north->Lakeside]] again if you need to, otherwise go \
+  [[west->Aviary]] or [[east->Front Entrance]].
+%ul
+  %li
+    %p (link-reveal: "Where should I go next?")[
+    %p
+      If you have five gnus in your herd, it's time to go east. \
+      If you have four, go west.\
+      ]
+
+:: Aviary [haml]
+
+:: Front Entrance [haml]
+
 
 ::Index [haml]
 %ul
@@ -306,6 +389,10 @@ Walkthrough for 'Gnu in the Zoo'
   %li [[Devil Enclosure]]
   %li [[Reptile House]]
   %li [[Lakeside]]
+  %li [[Storage Area]]
+  %li [[Main Concourse]]
+  %li [[Aviary]]
+  %li [[Front Entrance]]
 
 ::footer [footer haml]
 %hr
