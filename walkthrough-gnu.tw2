@@ -444,9 +444,40 @@ Walkthrough for 'Gnu in the Zoo'
 %p
   You can exit [[east->Main Concourse]] from either end.
 
-
 :: Front Entrance [haml]
-
+%p
+  This looks promising, doesn't it? \
+  Do you have everything you need to escape?
+%ul
+  %li
+    %p (link-reveal: "No")[
+    %p
+      You'll need to go back [[west->Main Concourse]] and get more help.
+      ]
+  %li
+    %p (link-reveal: "Yes")[
+    %p
+      Ah, well, congratulations are in order. \
+      I hope you enjoyed the game! \
+      If you followed this walkthrough all the way through you should have full marks, \
+      but in case you missed any, here's how they break down:
+    %ol
+      %li Recruiting Affero to your herd
+      %li Unlocking Tex's enclosure
+      %li Unlocking Vincent's enclosure
+      %li Unlocking Beastie's enclosure
+      %li Recruiting Beastie to your herd
+      %li Unlocking Mo's tank
+      %li Unlocking Odi's tank
+      %li Recruiting Odi to your herd
+      %li Recruiting Tabby to your herd
+      %li Unlocking the Aviary
+      %li Recruiting Striker to your herd
+      %li Escaping within four game hours
+    %p
+      If you can stand to play the game again, here's a challenge for you: \
+      can you win the game with a score of only 4?
+      ]
 
 ::Index [haml]
 %ul
