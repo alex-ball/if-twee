@@ -142,7 +142,7 @@ Walkthrough for 'Gnu in the Zoo'
       I recommend going north again and exploring the east and west ends of the path. \
       If you have done that to your satisfaction, \
       the most *logical* order is to then explore south, east, then west, \
-      but the most *efficient* order is west, east, then south.\
+      but the most *efficient* order is west, east, then south.
       ]
 
 ::Elephant Enclosure [haml]
@@ -160,7 +160,7 @@ Walkthrough for 'Gnu in the Zoo'
       (you will need the right key).
     %p
       For a complete experience, \
-      try waking Vincent, then immediately undo. \
+      try waking Vincent, then immediately undo. 
       ]
   %li
     %p (link-reveal: "What does Vincent represent?")[
@@ -170,7 +170,7 @@ Walkthrough for 'Gnu in the Zoo'
       it cannot be converted to the GPL, hence you cannot turn Vincent into a gnu.
     %p
       The imagery comes from the fact that the mascot of PHP is the <a href="http://php.net/elephpant.php">ElePHPant</a>, \
-      which was designed by Vincent Pontier. \
+      which was designed by Vincent Pontier. 
       ]
 
 ::Lion Enclosure [haml]
@@ -188,7 +188,7 @@ Walkthrough for 'Gnu in the Zoo'
       (you will need the right key).
     %p
       For a complete experience, \
-      open the enclosure gate, then immediately undo. \
+      open the enclosure gate, then immediately undo.
       ]
   %li
     %p (link-reveal: "What does Tex represent?")[
@@ -199,7 +199,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       LaTeX is a macro package that makes the TeX typesetting system easier to work with. \
       The <a href="https://www.ctan.org/lion/">mascot for TeX</a> is a lion that was drawn by Duane Bibby \
-      and used both for Donald Knuth's *TeXbook* and Leslie Lamport's *LaTeX book*. \
+      and used both for Donald Knuth's *TeXbook* and Leslie Lamport's *LaTeX book*.
       ]
 
 ::Devil Enclosure [haml]
@@ -216,7 +216,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       Pull out the claws, and then touch him as if to give him a comforting pat.
     %p
-      (link: "What next?")[Recruit Beastie to your herd by asking him to follow you.] \
+      (link: "What next?")[Recruit Beastie to your herd by asking him to follow you.]
       ]]
   %li
     %p (link-reveal: "What does Beastie represent?")[
@@ -246,7 +246,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p (link-reveal: "What's that?")[
     %p
       Just unlock the tank (with the right key) and walk away. \
-      Mo is not dangerous but you can't recruit her. \
+      Mo is not dangerous but you can't recruit her.
       ]
   %li
     %p (link-reveal: "What does Mo represent?")[
@@ -263,7 +263,7 @@ Walkthrough for 'Gnu in the Zoo'
       As this would be out of place in a zoo, \
       I decided to refer instead to Gecko, \
       the rendering engine used in Mozilla browsers \
-      such as Firefox and SeaMonkey. \
+      such as Firefox and SeaMonkey.
       ]]
 %p
   (link-reveal: "The south end")[ contains the tank that houses Odi the Python. \
@@ -273,7 +273,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p (link-reveal: "What do I have to do here?")[
     %p
       Unlock the tank (with the right key). \
-      Touch Odi then ask her to follow you. \
+      Touch Odi then ask her to follow you.
       ]
   %li
     %p (link-reveal: "What does Odi represent?")[
@@ -287,7 +287,7 @@ Walkthrough for 'Gnu in the Zoo'
       Before the Python programming language had its current \
       plus-shaped logo formed of two abstract snakes, \
       its logo was a cute cartoon snake called \
-      <a href="https://web.archive.org/web/20030105154824/http://python.org/wiki/img/Odi.jpg">Odi</a>.\
+      <a href="https://web.archive.org/web/20030105154824/http://python.org/wiki/img/Odi.jpg">Odi</a>.
       ]]
 %p
   When you've finished, exit east from the [[north end->Riverside]] \
@@ -302,7 +302,7 @@ Walkthrough for 'Gnu in the Zoo'
     %p (link-reveal: "How do I do that?")[
     %p
       Well, she's asleep, so the very first thing you have to do \
-      is wake her up. You can probably work out the rest.\
+      is wake her up. You can probably work out the rest.
       ]
   %li
     %p (link-reveal: "What does Tabby represent?")[
@@ -313,7 +313,7 @@ Walkthrough for 'Gnu in the Zoo'
       known more generically as the Berkeley Database Licence, \
       which can be converted to the GPL. \
       The name is a vague play on tab-separated format \
-      as a way of representing data.\
+      as a way of representing data.
       ]
 %p
   After that, you can head back [[north->Riverside]], \
@@ -370,10 +370,80 @@ Walkthrough for 'Gnu in the Zoo'
     %p (link-reveal: "Where should I go next?")[
     %p
       If you have five gnus in your herd, it's time to go east. \
-      If you have four, go west.\
+      If you have four, go west.
       ]
 
 :: Aviary [haml]
+%p
+  There are three rooms in the Aviary: north, middle and south. \
+  I recommend examining everything in all three rooms \
+  before actually attempting to do anything.
+%p
+  (link: "Done that?")[You will have found four birds: \
+  Miron the Condor, the eagles Behlendorf and Striker, \
+  and Sparky the Phoenix. \
+  Only one of them can be recruited for your herd, \
+  but you'll have to find a way to get that one to come nearer first.
+%ul
+  %li
+    %p (link-reveal: "How do I do that?")[
+    %p
+      The trick is to throw something at the perches. \
+      Now, there is a risk of losing whatever you throw, \
+      so don't throw the keys if you haven't used them all. \
+      Use the coal instead.
+    %p
+      Also, do bear in mind that only one of the birds will leave their perch. \
+      For a complete experience, keep pestering one of them \
+      ((link: "which?")[Sparky]) \
+      and immediately undo when it goes horribly wrong.
+      ]
+  %li
+    %p (link-reveal: "What does Miron represent?")[
+    %p
+      <a href="research.cs.wisc.edu/htcondor/">Miron the Condor</a> represents, \
+      unsurprisingly, the Condor Public Licence. This is a free software licence \
+      but because it includes protection of the Condor brand \
+      it cannot be converted to the GPL. \
+      The name derives from Professor Miron Livny, \
+      Director of the Center for High Throughput Computing at the University of Wisconsin-Madison, \
+      who is named as a contact by the licence text.
+      ]
+  %li
+    %p (link-reveal: "What does Sparky represent?")[
+    %p
+      This is so obscure, even I had trouble remembering, but my notes tell me \
+      <a href="https://commons.wikimedia.org/wiki/File:Firebird_logo.svg">Sparky the Phoenix</a> \
+      represents the Interbase Public Licence, \
+      since it was used for the source code of the Firebird relational database. \
+      Needless to say, due to various complications it cannot be turned into the GPL. \
+      The name was probably a riff on SQL via SPARQL, \
+      but I have since found out that Sparky the Phoenix is also \
+      the mascot of the Moutohora Macaws Quidditch team.
+    %p
+      It probably would have made more sense to use the mascot of Interbase itself, \
+      but for some reason I felt a hummingbird would be more out of place in a zoo \
+      than a creature from ancient mythology.
+      ]
+  %li
+    %p (link-reveal: "What do Behlendorf and Striker represent?")[
+    %p
+      The patchy eagles represent different versions of the Apache Licence, \
+      on the basis that the icon of the <a href="http://apache.org/">Apache Software Foundation</a> \
+      is a colourful eagle feather.
+    %p
+      Behlendorf, on the lower perch, represents version 1 of the licence, \
+      which cannot be converted into the GPL. \
+      He is named after Brian Behlendorf, one of the founders of Apache.
+    %p
+      Striker, on the higher perch, represents version 2 of the licence, \
+      which can be converted into the GPL. \
+      He is named after Sander Striker, \
+      who was President of the Apache Software Foundation when this game was written.
+      ]]
+%p
+  You can exit [[east->Main Concourse]] from either end.
+
 
 :: Front Entrance [haml]
 
