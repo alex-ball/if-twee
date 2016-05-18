@@ -18,7 +18,10 @@ The Spectrap
   tw-passage {
     color: #ffffff;
   }
-</style>{
+</style>\
+<p style="text-align:center;">\
+  <img src="The_Spectrap.jpg" alt="The Spectrap, by Alex Ball" style="width:33%" />\
+</p>{
   You are on the trail of a witch.
   You have tracked her down to a house in the forest, and are looking around inside.
   You go down to the dark cellar, but before you can find the light switch
@@ -1105,6 +1108,14 @@ You are free!
 Now all you have to find out where the witch went...
 
 **Congratulations, you have won.**
+
+::footer [footer haml]
+%p{:style => "text-align:center;"}
+  %small<
+    \~ ~ ~ \
+    (link:"Save progress")[(if:(save-game:"Slot A"))[Progress saved!](else: )[Sorry, I couldn't save your progress.]] \
+    (if: (saved-games:) contains "Slot A")[| (link: "Load game")[(load-game:"Slot A")]] \
+    \~ ~ ~
 
 ::Zebug [startup]
 
