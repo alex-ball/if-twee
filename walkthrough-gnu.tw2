@@ -39,7 +39,7 @@ Walkthrough for 'Gnu in the Zoo'
       You get warnings after four hours and five hours respectively. \
       This means, in practice, there is no necessity to save your progress at first, \
       but if the zoo starts waking up you should start saving, \
-      and trying to make progress in the fewest number of moves.
+      and try to make progress in the fewest number of moves.
       ]
   %li
     %p (link-reveal: "What's all this about Lee and the stallman?")[
@@ -132,17 +132,20 @@ Walkthrough for 'Gnu in the Zoo'
   ](else:)[\
   go [[north-then-west->Lion Enclosure]]\
   ], \
-  or go [[east->Reptile House]], \
+  or go east to the [[Reptile House]], \
   [[west->Devil Enclosure]], or \
   [[south->Lakeside]].
 %ul
   %li
     %p (link-reveal: "Where should I go next?")[
     %p
-      I recommend going north again and exploring the east and west ends of the path. \
+      I recommend going north again and exploring the \
+      [[east->Elephant Enclosure]] and [[west->Lion Enclosure]] ends of the path. \
       If you have done that to your satisfaction, \
-      the most *logical* order is to then explore south, east, then west, \
-      but the most *efficient* order is west, east, then south.
+      the most *logical* order is to then explore [[south->Lakeside]], \
+      [[east->Reptile House]], then [[west->Devil Enclosure]], \
+      but the most *efficient* order is [[west->Devil Enclosure]], \
+      [[east->Reptile House]], then [[south->Lakeside]].
       ]
 
 ::Elephant Enclosure [haml]
@@ -290,7 +293,7 @@ Walkthrough for 'Gnu in the Zoo'
       <a href="https://web.archive.org/web/20030105154824/http://python.org/wiki/img/Odi.jpg">Odi</a>.
       ]]
 %p
-  When you've finished, exit east from the [[north end->Riverside]] \
+  When you've finished, exit west from the [[north end->Riverside]] \
   or the [[south end->Lakeside]].
 
 ::Lakeside [haml]
@@ -325,8 +328,9 @@ Walkthrough for 'Gnu in the Zoo'
     %p (link-reveal: "Where should I go next?")[
     %p
       If you have three or fewer gnus in your herd, \
-      head back north or east. \
-      If you have four, explore west then south.
+      head back [[north->Riverside]] or [[east->Reptile House]]. \
+      If you have four, explore [[west->Storage Area]] then \
+      [[south->Main Concourse]].
       ]
 
 ::Storage Area [haml]
@@ -357,20 +361,22 @@ Walkthrough for 'Gnu in the Zoo'
 ::Main Concourse [haml]
 %p
   There's nothing to do here except enjoy the scenery. \
-  If you spotted the clock, I can only apologise. \
-  When I put that in, I realised I had to put in a time limit \
-  because at some point the visitors would show up. \
-  So you have until 6 a.m. to escape. \
-  There is a bonus point in it for you if you get out by 4 a.m.
+  You may have noticed the clock; \
+  it was because of that that I added the time limit. \
+  If you'd read the time and found it to be mid-morning, \
+  you may well have started to wonder where everyone was \
+  and why a keeper hadn't locked you back up. \
+  So now if you run out of time, a keeper *does* lock you back up.
 %p
   You can go [[north->Lakeside]] again if you need to, otherwise go \
-  [[west->Aviary]] or [[east->Front Entrance]].
+  west into the [[Aviary]] (you will need a key) or \
+  through the archway to the [[east->Front Entrance]].
 %ul
   %li
     %p (link-reveal: "Where should I go next?")[
     %p
-      If you have five gnus in your herd, it's time to go east. \
-      If you have four, go west.
+      If you have five gnus in your herd, it's time to go [[east->Front Entrance]]. \
+      If you have four, go [[west->Aviary.]]
       ]
 
 :: Aviary [haml]
@@ -396,7 +402,7 @@ Walkthrough for 'Gnu in the Zoo'
       Also, do bear in mind that only one of the birds will leave their perch. \
       For a complete experience, keep pestering one of them \
       ((link: "which?")[Sparky]) \
-      and immediately undo when it goes horribly wrong.
+      and immediately undo when the entirely evitable havoc ensues.
       ]
   %li
     %p (link-reveal: "What does Miron represent?")[
@@ -421,7 +427,7 @@ Walkthrough for 'Gnu in the Zoo'
       but I have since found out that Sparky the Phoenix is also \
       the mascot of the Moutohora Macaws Quidditch team.
     %p
-      It probably would have made more sense to use the mascot of Interbase itself, \
+      It probably would have made more sense to use the logo of Interbase itself, \
       but for some reason I felt a hummingbird would be more out of place in a zoo \
       than a creature from ancient mythology.
       ]
@@ -438,8 +444,9 @@ Walkthrough for 'Gnu in the Zoo'
     %p
       Striker, on the higher perch, represents version 2 of the licence, \
       which can be converted into the GPL. \
-      He is named after Sander Striker, \
-      who was President of the Apache Software Foundation when this game was written.
+      He is named after Sander Striker, who was Director of the Board \
+      of the Apache Software Foundation when the version 2 licence was released, \
+      and President of the foundation when this game was written.
       ]]
 %p
   You can exit [[east->Main Concourse]] from either end.
