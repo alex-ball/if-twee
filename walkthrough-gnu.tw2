@@ -11,7 +11,10 @@ Walkthrough for 'Gnu in the Zoo'
   Rather than being a turn-by-turn solution for the game ‘
   %a{:href => "http://alexball.me.uk/if/gnu", :target => "_blank"}> Gnu in the Zoo
   ’, this walkthrough will keep you on the right track \
-  while still giving you a chance to work things out for yourself.
+  while still giving you a chance to work things out for yourself. \
+  (If you really, truly, desperately want a turn-by-turn solution, { }
+  %a{:href => "http://alexball.me.uk/if/gnu", :target => "_blank"} there is one
+  , but where's the fun in that?)
 %p
   This is also a chance for me to explain some of the symbolism, \
   but if you're not interested you don't have to read it.
