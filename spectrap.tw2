@@ -626,7 +626,9 @@ $hasNowt[
       ]\
     ]\
   ](else-if: $frveg is $solution)[\
-    You lift up the cloche and reveal a square of green film in a brass frame –\
+    You heave at the cloche, and this time it comes free of the table, \
+    though it is still unexpectedly heavy. \
+    Underneath is a square of green film in a brass frame –\
     (link: "take it?")[taken.\
       (set: $hasGreen to true)\
       (set: $deck to it + (a: "green slide"))\
