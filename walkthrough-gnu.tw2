@@ -13,7 +13,7 @@ Walkthrough for 'Gnu in the Zoo'
   ’, this walkthrough will keep you on the right track \
   while still giving you a chance to work things out for yourself. \
   (If you really, truly, desperately want a turn-by-turn solution, { }
-  %a{:href => "http://alexball.me.uk/if/gnu", :target => "_blank"} there is one
+  %a{:href => "http://alexball.me.uk/if/gnu/solution.txt", :target => "_blank"} there is one
   , but where's the fun in that?)
 %p
   This is also a chance for me to explain some of the symbolism, \
@@ -110,7 +110,7 @@ Walkthrough for 'Gnu in the Zoo'
 %ul
   %li
     %p (link-reveal: "Where should I go next?")[
-    %p I recommend going [[south->Riverside]].]  
+    %p I recommend going [[south->Riverside]].]
 
 ::Riverside [haml]
 %p
@@ -166,7 +166,7 @@ Walkthrough for 'Gnu in the Zoo'
       (you will need the right key).
     %p
       For a complete experience, \
-      try waking Vincent, then immediately undo. 
+      try waking Vincent, then immediately undo.
       ]
   %li
     %p (link-reveal: "What does Vincent represent?")[
@@ -176,7 +176,7 @@ Walkthrough for 'Gnu in the Zoo'
       it cannot be converted to the GPL, hence you cannot turn Vincent into a gnu.
     %p
       The imagery comes from the fact that the mascot of PHP is the <a href="http://php.net/elephpant.php">ElePHPant</a>, \
-      which was designed by Vincent Pontier. 
+      which was designed by Vincent Pontier.
       ]
 
 ::Lion Enclosure [haml]
@@ -523,6 +523,6 @@ tw-passage a {
 tw-passage a:hover {
   color: #00bfff;
 }
-    
+
 ::Twee2Settings [twee2]
 @story_start_name = 'Start'
