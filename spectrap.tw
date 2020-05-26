@@ -1,16 +1,25 @@
-::StoryIFID[twee2]
-Twee2::build_config.story_ifid = "7C0717A5-5E23-4326-AC3D-6D1A1CBC7988"
-
-::StoryTitle
+:: StoryTitle
 The Spectrap
 
-::Variables [startup] <600,0>
+
+:: StoryData
+{
+	"ifid": "7C0717A5-5E23-4326-AC3D-6D1A1CBC7988",
+	"format": "Harlowe",
+	"format-version": "1.2.2",
+	"start": "Start",
+	"zoom": 1
+}
+
+
+:: Variables [startup] {"position":"600,0"}
 (set: $inventory to (a:))\
 (set: $deck to (a:))\
 (set: $projectorIsOn to false)\
 (set: $colour to "white")
 
-::Start <900,0>
+
+:: Start {"position":"900,0"}
 <style>
   body {
     background-color: #000000;
@@ -34,7 +43,8 @@ The Spectrap
   and eventually find it next to the door.
 }
 
-::cellar <900,150>
+
+:: cellar {"position":"900,150"}
 (unless: (history:) contains "cellar")[{
   Click! The light comes on and you turn to see your surroundings for the first time.
 }
@@ -53,7 +63,8 @@ The Spectrap
   A [[cupboard]] stands to one side.
 }
 
-::grey door <750,150>
+
+:: grey door {"position":"750,150"}
 {
   The door is plain but solid.
   The handle is made of chunky steel;
@@ -76,7 +87,8 @@ The Spectrap
   unless you can find a way to unlock the door.
 }]
 
-::projector <750,300>
+
+:: projector {"position":"750,300"}
 {
   (unless: (history:) contains "projector")[(set: $slot to (a:))]
   (unless: $projectorIsOn)[
@@ -111,12 +123,13 @@ The Spectrap
 
 Behind you is the [[cupboard]] and to the south is the [[grey door]].
 
-::two slots
+
+:: two slots
 (unless: (history:) contains "two slots")[(set: $firstSlide to true)]\
 (if: ($slot's length is 0) and ($deck's length is 0))[\
   The slots lie between the bulb and the lens.\
   They look like they would hold something small, thin and square.
-  
+
   You look again at the [[projector]].\
 ](else-if: ($deck's length is 1) and $firstSlide)[\
     It looks like the slide you found would fit in one of the slots.
@@ -138,7 +151,7 @@ Behind you is the [[cupboard]] and to the south is the [[grey door]].
         (go-to: "two slots")\
       ]?\
     ]
-    
+
   ]\
   (if: ($slot's length < 2) and ($deck's length > 0))[\
     Will you put the\
@@ -158,12 +171,13 @@ Behind you is the [[cupboard]] and to the south is the [[grey door]].
         (go-to: "two slots")\
       ]?\
     ]
-    
+
   ]\
   Or will you look again at the [[projector]]?\
 ]
 
-::cupboard <1050,300>
+
+:: cupboard {"position":"1050,300"}
 {
   (unless: (history:) contains "cupboard")[(set: $hasBlue to false)]
   The cupboard takes up most of one wall of the cellar.
@@ -185,7 +199,8 @@ Behind you is the [[cupboard]] and to the south is the [[grey door]].
   and to the north the odd-looking [[$colour door]].
 }
 
-::white door
+
+:: white door
 {
   The door turns out to be a life-size, life-like and highly detailed painting.
   It is covered in squiggles that you recognise as magical symbols,
@@ -196,7 +211,8 @@ Behind you is the [[cupboard]] and to the south is the [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::blue door
+
+:: blue door
 {
   (if: (history:) contains "Blue Room")[(go-to:"Blue Room")]
   (else:)[
@@ -214,7 +230,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::magenta door
+
+:: magenta door
 {
   (if: (history:) contains "Magenta Room")[(go-to:"Magenta Room")]
   (else:)[
@@ -227,7 +244,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::red door
+
+:: red door
 {
   (if: (history:) contains "Red Room")[(go-to:"Red Room")]
   (else:)[
@@ -240,7 +258,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::yellow door
+
+:: yellow door
 {
   (if: (history:) contains "Yellow Room")[(go-to:"Yellow Room")]
   (else:)[
@@ -253,7 +272,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::cyan door
+
+:: cyan door
 {
   (if: (history:) contains "Cyan Room")[(go-to:"Cyan Room")]
   (else:)[
@@ -266,7 +286,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::green door
+
+:: green door
 {
   (if: (history:) contains "Green Room")[(go-to:"Green Room")]
   (else:)[
@@ -279,7 +300,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
 Behind you are the [[projector]], [[cupboard]] and [[grey door]].
 
-::Blue Room <1200,0>
+
+:: Blue Room {"position":"1200,0"}
 <style>
   body {
     background-color: #d0dcfb;
@@ -303,7 +325,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   A [[blue door->cellar]] lies to the south.
 }
 
-::wooden table
+
+:: wooden table
 <style>
   body {
     background-color: #d0dcfb;
@@ -336,7 +359,7 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
       (set: $taken to it + (a: $tableTop's 1st))\
       (set: $inventory to it + (a: $tableTop's 1st))\
       which you take];
-      
+
     * a (link-reveal: $blueItems's ($tableTop's 2nd))[,\
       (set: $taken to it + (a: $tableTop's 2nd))\
       (set: $inventory to it + (a: $tableTop's 2nd))\
@@ -357,7 +380,8 @@ Behind you are the [[projector]], [[cupboard]] and [[grey door]].
   and a [[blue door->cellar]] lies to the south.
 }
 
-::fish tank
+
+:: fish tank
 (unless: (history:) contains "fish tank")[(set: $fishing to false)]\
 $fishing[(go-to: "fishing")]\
 <style>
@@ -392,13 +416,14 @@ $fishing[(go-to: "fishing")]\
   It seems to be a small square of\
   (link: "red film")[(set: $fishing to true)(go-to: "fishing")]\
   set in a brass frame.
-  
+
 ]]{
   Behind you is the [[wooden table]],
   and a [[blue door->cellar]] lies to the south.
 }
 
-::fishing
+
+:: fishing
 <style>
   body {
     background-color: #d0dcfb;
@@ -437,13 +462,14 @@ $fishing[(go-to: "fishing")]\
     manage to scoop the (print: "**red slide**") out of the tank].]\
 $hasNowt[
   No, you don't have anything that might be useful.
-  
+
 ]{
   Behind you is the [[wooden table]],
   and a [[blue door->cellar]] lies to the south.
 }
 
-::Magenta Room <750,600>
+
+:: Magenta Room {"position":"750,600"}
 <style>
   body {
     background-color: #f1d0fb;
@@ -471,7 +497,8 @@ $hasNowt[
   though it is securely locked:\
   you guess this is the last carriage before the engine].
 
-::First Compartment <600,600>
+
+:: First Compartment {"position":"600,600"}
 <style>
   body {
     background-color: #f1d0fb;
@@ -492,7 +519,8 @@ $hasNowt[
 
   ]The [[door to the corridor->Magenta Room]] is to the west.
 
-::Second Compartment <600,750>
+
+:: Second Compartment {"position":"600,750"}
 <style>
   body {
     background-color: #f1d0fb;
@@ -523,7 +551,8 @@ $hasNowt[
 
   ]The [[door to the corridor->Magenta Room]] is to the west.
 
-::Third Compartment <750,750>
+
+:: Third Compartment {"position":"750,750"}
 <style>
   body {
     background-color: #f1d0fb;
@@ -553,7 +582,8 @@ $hasNowt[
 
   ]The [[door to the corridor->Magenta Room]] is to the west.
 
-::Fourth Compartment <900,750>
+
+:: Fourth Compartment {"position":"900,750"}
 <style>
   body {
     background-color: #f1d0fb;
@@ -574,7 +604,8 @@ $hasNowt[
 
   The [[door to the corridor->Magenta Room]] is to the west.
 
-::Red Room <1050,600>
+
+:: Red Room {"position":"1050,600"}
 <style>
   body {
     background-color: #fbd0db;
@@ -639,12 +670,12 @@ $hasNowt[
 
 ](if: $a is "")[One of the plates is empty.\
   This strikes you as wrong somehow, but what can you [do?]<fixme|
-  
+
 ](else-if: ($a is "herring") and ($inventory contains "prune"))[Hmm.\
   Something still seems fishy about this.\
   Perhaps the herring wasn't the right thing to put with the fruit and vegetables.\
   You could try the prune instead.
-  
+
 ]{
   (if: ($inventory contains "red herring") or ($inventory contains "prune"))[
     (set: $fix to " You search your pockets and turn out a ")
@@ -681,7 +712,8 @@ $hasNowt[
   ]
 }A [[red door->cellar]] lies to the south.
 
-::filled plate
+
+:: filled plate
 <style>
   body {
     background-color: #fbd0db;
@@ -699,7 +731,8 @@ $hasNowt[
 
   A [[red door->cellar]] lies to the south.
 
-::replaced plate
+
+:: replaced plate
 <style>
   body {
     background-color: #fbd0db;
@@ -718,7 +751,8 @@ $hasNowt[
 
 A [[red door->cellar]] lies to the south.
 
-::plates
+
+:: plates
 <style>
   body {
     background-color: #fbd0db;
@@ -729,7 +763,7 @@ A [[red door->cellar]] lies to the south.
 </style>\
   There are six plates arranged in a circle around the cloche.\
   Each one is a different colour.
-  
+
   The red plate holds a **(print: $frveg's 1)**.
   * (link: "Swap")[(set: $x to $frveg's 1)(set: $frveg's 1 to $frveg's 2)(set: $frveg's 2 to $x)(go-to: "plates")]\
     what's on the red and orange plates?
@@ -749,11 +783,12 @@ A [[red door->cellar]] lies to the south.
   * (link: "Swap")[(set: $x to $frveg's 6)(set: $frveg's 6 to $frveg's 1)(set: $frveg's 1 to $x)(go-to: "plates")]\
     what's on the purple and red plates?
   (if: $frveg is $solution)[Bong! The sound of a dinner gong echoes loudly around the room.
-  
+
   ]You could [[step back->Red Room]] to admire the full effect,\
   or go south through the [[red door->cellar]].
 
-::Yellow Room <1150,450>
+
+:: Yellow Room {"position":"1150,450"}
 <style>
   body {
     background-color: #fbf1d0;
@@ -802,7 +837,8 @@ A [[red door->cellar]] lies to the south.
 
 ]]A [[yellow door->cellar]] lies to the south.
 
-::build
+
+:: build
 <style>
   body {
     background-color: #fbf1d0;
@@ -876,7 +912,8 @@ A [[red door->cellar]] lies to the south.
 
   ]]A [[yellow door->cellar]] lies to the south.
 
-::Cyan Room <1200,150>
+
+:: Cyan Room {"position":"1200,150"}
 <style>
   body {
     background-color: #d0fbf1;
@@ -931,7 +968,8 @@ A [[red door->cellar]] lies to the south.
 
 ]A [[cyan door->cellar]] lies to the south.
 
-::Green Room <1200,300>
+
+:: Green Room {"position":"1200,300"}
 <style>
   body {
     background-color: #dbfbd0;
@@ -981,7 +1019,8 @@ A [[red door->cellar]] lies to the south.
 ]]\
 A [[green door->cellar]] lies to the south.
 
-::snooker
+
+:: snooker
 <style>
   body {
     background-color: #dbfbd0;
@@ -1039,7 +1078,8 @@ On the table(if: $inPlay's length is 0)[\
   The [[rack->Green Room]] stands to the side.\
   A [[green door->cellar]] lies to the south.
 
-::more balls
+
+:: more balls
 <style>
   body {
     background-color: #dbfbd0;
@@ -1102,7 +1142,8 @@ On the table(if: $inPlay's length is 0)[\
 
 You survey the [[table->snooker]] again.
 
-::Escape <600,300>
+
+:: Escape {"position":"600,300"}
 The steel key does indeed fit neatly in the lock. Hardly daring to breathe, you turn the key. To your immense relief, there is a loud clunk as the door unlocks. You yank open the door and, pausing only to turn out the light behind you, bound up the stairs.
 
 You are free!
@@ -1111,15 +1152,14 @@ Now all you have to find out where the witch went...
 
 **Congratulations, you have won.**
 
-::footer [footer haml]
-%p{:style => "text-align:center;"}
-  %small<
-    \~ ~ ~ \
-    (link:"Save progress")[(if:(save-game:"Slot A"))[Progress saved!](else: )[Sorry, I couldn't save your progress.]] \
-    (if: (saved-games:) contains "Slot A")[| (link: "Load game")[(load-game:"Slot A")]] \
-    \~ ~ ~
 
-::Zebug [startup]
+:: footer [footer]
+<p style='text-align:center;'><small>~ ~ ~ \
+(link:"Save progress")[(if:(save-game:"Slot A"))[Progress saved!](else: )[Sorry, I couldn't save your progress.]] \
+(if: (saved-games:) contains "Slot A")[| (link: "Load game")[(load-game:"Slot A")]] \
+~ ~ ~</small></p>
 
-::Twee2Settings [twee2]
-@story_start_name = 'Start'
+
+:: Zebug [startup]
+
+

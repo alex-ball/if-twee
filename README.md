@@ -1,9 +1,10 @@
-# Interactive Fiction using Twee2
+# Interactive Fiction using Twee
 
-This repository contains interactive fiction I have written using
-[Twee2](https://avapoet.github.io/twee2/),
-being a command-line version of [Twine 2](http://twinery.org/).
-In all cases I would recommend playing the games before looking at the souce code.
+This repository contains interactive fiction I have written using story formats
+designed for [Twine 2](http://twinery.org/). These were at one point written to
+be compiled by [Twee2](https://dan-q.github.io/twee2/), but have been converted
+to the official Twee 3 notation. In all cases I would recommend playing the
+games before looking at the source code.
 
 All titles are made available under a Creative Commons Attribution
 Non-Commercial Share-Alike version 4.0 licence.
