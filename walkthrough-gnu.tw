@@ -1,0 +1,529 @@
+:: StoryTitle
+Walkthrough for 'Gnu in the Zoo'
+
+
+:: StoryData
+{
+	"ifid": "626CAEDA-A9B3-4E62-ACB8-B405A0B05F3E",
+	"format": "Harlowe",
+	"format-version": "3.1.0",
+	"start": "Start",
+	"zoom": 1
+}
+
+
+:: Story Stylesheet [stylesheet]
+tw-story {
+  background-color: #fff;
+  color: #000;
+}
+tw-passage a {
+  color: #4169E1;
+  font-weight: 700;
+  text-decoration: none;
+}
+tw-passage a:hover {
+  color: #00bfff;
+}
+
+
+:: Start
+{
+<h1>Walkthrough for ‘Gnu in the Zoo’</h1>
+<p>Rather than being a turn-by-turn solution for the game
+  ‘<a href='http://alexball.me.uk/if/gnu/' target='_blank'>Gnu in the Zoo</a>’,
+  this walkthrough will keep you on the right track
+  while still giving you a chance to work things out for yourself.
+  (If you really, truly, desperately want a turn-by-turn solution,
+  <a href='http://alexball.me.uk/if/gnu/solution.txt' target='_blank'>there is one</a>,
+  but where's the fun in that?)</p>
+<p>This is also a chance for me to explain some of the symbolism,
+  but if you're not interested you don't have to read it.</p>
+<p>If you have made it partway through the game then got stuck,
+  you can skip to right section via the [[Index]].
+  Otherwise, let's start at the beginning, in [[Your Stall]].</p>
+}
+
+
+:: Your Stall
+{
+<p>As the name of the game suggests, you are a gnu in a zoo,
+  but you wish you weren't.</p>
+<p>There is not much to do here, so get exploring!
+  You can go [[west->Affero's Stall]] or [[south->Gnu Enclosure Entrance]].</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Will I need to save every five minutes?")[(show: ?save)]</p>
+    |save)[<p>I tried to make the game polite about losing moves,
+      so you can safely try things out and undo if it all goes horribly wrong.
+      There is one exception, and that is the time limit.
+      As a kind of nod to realism,
+      your character wakes up at midnight and has six in-game hours to escape.
+      You get warnings after four hours and five hours respectively.
+      This means, in practice, there is no necessity to save your progress at first,
+      but if the zoo starts waking up you should start saving,
+      and try to make progress in the fewest number of moves.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What's all this about Lee and the stallman?")[(show: ?mean1)]</p>
+    |mean1)[<p>Richard Stallman founded the GNU Project in 1983
+      to develop a free-as-in-speech computing platform.
+      Their main goal within that was to create an operating system similar to UNIX.
+      The most intricate problem to solve was writing a kernel,
+      being the bit of the software that directly talks to the hardware.
+      Their kernel is called GNU Hurd and they are still working on it,
+      so in the meantime they mostly use the Linux kernel instead.
+      Linux is named after Linus Torvalds, who pronounces it ‘Leenooks’.</p>
+    <p>The allegory here is not great so I don't push it.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does the point-of-view gnu represent?")[(show: ?mean2)]</p>
+    |mean2)[<p>The underlying principle here is that all the animals in the zoo represent software licences.
+      You represent the GNU General Public Licence (GPL) v3.
+      Some other licences are compatible with the GPL,
+      which is to say that code with that licence can be combined with GPL code
+      and released under the GPL; in other words, they can be turned into the GPL.
+      Others aren't, and can't. The importance of this will soon become clear.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "Where should I go next?")[(show: ?go)]</p>
+    |go)[<p>I recommend going [[west->Affero's Stall]].</p>]
+  </li>
+</ul>
+}
+
+
+:: Affero's Stall
+{
+<p>You first encounter Affero the Gnu in the stall next to yours.
+  Examine everything.</p>
+<ul>
+  <li>
+    <p>(link-reveal: "What do I have to do here?")[(show: ?do1A)(show: ?do2Q)]</p>
+    |do1A)[<p>The description of Affero tells you that you want/need her to follow you.</p>]
+    |do2Q)[<p>(link-reveal: "How do I make that happen?")[(show: ?do2A)]</p>]
+    |do2A)[<p>The incantation you need is ‘AFFERO, FOLLOW ME’.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Affero represent?")[(show: ?mean)]</p>
+    |mean)[<p>The Affero General Public Licence (AGPL) is another GNU licence,
+      hence another gnu. While the regular GPL assumes the software will be
+      compiled into a locally running application, the AGPL assumes that users
+      will interact with it over the Web.</p>]
+  </li>
+</ul>
+<p>Once you have done everything you need to,
+  [[escape the Gnu Enclosure->Gnu Enclosure Entrance]] by going east then south.</p>
+}
+
+
+:: Gnu Enclosure Entrance
+{
+<p>Outside the Gnu Enclosure is a crossroads.
+  (if: (history:) contains "Affero's Stall")[
+    You have the choice of going
+  ](else:)[
+    If you think you might have missed something, you can re-enter [[Your Stall]],
+    otherwise you should head
+  ] [[east->Elephant Enclosure]], [[west->Lion Enclosure]] or [[south->Riverside]].
+  Enjoy the scenery.</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Where should I go next?")[(show: ?go)]</p>
+    |go)[<p>I recommend going [[south->Riverside]].</p>]
+  </li>
+</ul>
+}
+
+
+:: Riverside
+{
+<p>In the Riverside area is a very important artifact.
+  You will know it when you find it.</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Could you be more specific?")[(show: ?what)]</p>
+    |what)[<p>Yes. Enter the hut and pick up the keys.
+      Examine them for clues about what they unlock.</p>]
+  </li>
+</ul>
+<p>Once you have, you can (if: (history:) contains "Elephant Enclosure")[
+    revisit the [[Elephant Enclosure]],
+  ](else:)[
+    go [[north-then-east->Elephant Enclosure]],
+  ](if: (history:) contains "Lion Enclosure")[
+    revisit the [[Lion Enclosure]],
+  ](else:)[
+    go [[north-then-west->Lion Enclosure]],
+  ] or go east to the [[Reptile House]],
+  [[west->Devil Enclosure]], or
+  [[south->Lakeside]].</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Where should I go next?")[(show: ?go)]</p>
+    |go)[<p>(if: (history:) contains "Elephant Enclosure" and (history:) contains "Lion Enclosure")[
+        If you have explored the [[north->Gnu Enclosure Entrance]] of the zoo
+      ](else:)[
+        I recommend going north again and exploring the [[east->Elephant Enclosure]]
+        and [[west->Lion Enclosure]] ends of the path. If you have done that
+      ]to your satisfaction,
+      the most *logical* order is to then explore [[south->Lakeside]],
+      [[east->Reptile House]], then [[west->Devil Enclosure]],
+      but the most *efficient* order is [[west->Devil Enclosure]],
+      [[east->Reptile House]], then [[south->Lakeside]].</p>]
+  </li>
+</ul>
+}
+
+
+:: Elephant Enclosure
+{
+<p>Here you meet Vincent the Elephant.
+  There is one small thing you can do here before going back
+  [[west->Gnu Enclosure Entrance]].</p>
+<ul>
+  <li>
+    <p>(link-reveal: "I give up. What is it I'm supposed to do here?")[(show: ?do)]</p>
+    |do)[<p>The game's help text tells you can only do so much for some residents.
+      This is one of those times.
+      For full marks, unlock the enclosure and walk away
+      (you will need the right key).</p>
+    <p>For a complete experience,
+      try waking Vincent, then immediately undo.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Vincent represent?")[(show: ?mean)]</p>
+    |mean)[<p>Vincent represents the PHP licence.
+      Since the licence includes restrictions on using the name 'PHP' in derived products,
+      it cannot be converted to the GPL, hence you cannot turn Vincent into a gnu.</p>
+    <p>The imagery comes from the fact that the mascot of PHP is the
+      <a href="http://php.net/elephpant.php" target="_blank">ElePHPant</a>,
+      which was designed by Vincent Pontier.</p>]
+  </li>
+</ul>
+}
+
+
+:: Lion Enclosure
+{
+<p>Here you meet Tex the Lion.
+  There is one small thing you can do here before going back
+  [[east->Gnu Enclosure Entrance]].</p>
+<ul>
+  <li>
+    <p>(link-reveal: "I give up. What is it I'm supposed to do here?")[(show: ?do)]</p>
+    |do)[<p>The game's help text tells you can only do so much for some residents.
+      This is one of those times.
+      For full marks, unlock the enclosure and walk away
+      (you will need the right key).</p><p>For a complete experience,
+      open the enclosure gate, then immediately undo.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Tex represent?")[(show: ?mean)]</p>
+    |mean)[<p>Tex represents the LaTeX Project Public Licence.
+      It prevents modified files being released under the same name;
+      this means it cannot be converted to the GPL,
+      hence you cannot turn Tex into a gnu.</p>
+    <p>LaTeX is a macro package that makes the TeX typesetting system easier to work with.
+      The <a href="https://www.ctan.org/lion/" target="_blank">mascot for TeX</a>
+      is a lion that was drawn by Duane Bibby
+      and used both for Donald Knuth's *TeXbook* and Leslie Lamport's *LaTeX book*.</p>]
+  </li>
+</ul>
+}
+
+
+:: Devil Enclosure
+{
+<p>This is the home of Beastie the Tasmanian Devil.
+  You have a potential recruit here, but you have a few things to do first.</p>
+<ul>
+  <li>
+    <p>(link-reveal: "What do I have to do here?")[(show: ?do1A)]</p>
+    |do1A)[<p>After unlocking the enclosure (with the right key) and entering,
+      you need to provide some medical attention.
+      You see (link-reveal: "what's wrong with Beastie?")[(show: ?do2A)]</p>]
+    |do2A)[<p>Pull out the claws, and then touch him as if to give him a comforting pat.</p>
+    <p>(link: "What next?")[Recruit Beastie to your herd by asking him to follow you.]</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Beastie represent?")[(show: ?mean)]</p>
+    |mean)[<p>The mascot of BSD-based operating system is a little red daemon
+      called <a href="https://en.wikipedia.org/wiki/BSD_Daemon" target="_blank">Beastie</a>;
+      here I've transformed him into a Tasmanian Devil.</p>
+    <p>When you first meet him, he represents the original (4-clause) BSD licence.
+      This licence cannot be converted to the GPL because of its advertising clause.
+      Removing it results in the Modified (3-clause) BSD licence,
+      which *can* be converted to the GPL.
+      Hence you must mollify Beastie before you can turn him into a gnu.</p>]
+  </li>
+</ul>
+<p>When you've finished, return [[west->Riverside]].</p>
+}
+
+
+:: Reptile House
+{
+<p>There are two ‘rooms’ in the Reptile House, a north end and a south end.
+  Each contains an animal with which you can interact.</p>
+<p>(link-reveal: "The north end")[ contains the tank that houses Mo the Gecko.
+  There is only one thing you need to do here.(show: ?n)]</p>
+|n)[<ul>
+  <li>
+    <p>(link-reveal: "What's that?")[(show: ?doN)]</p>
+    |doN)[<p>Just unlock the tank (with the right key) and walk away.
+      Mo is not dangerous but you can't recruit her.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Mo represent?")[(show: ?meanN)]</p>
+    |meanN)[<p>Mo represents the Mozilla Public Licence version 1.1.
+      There are some restrictions that mean it can't be converted to the GPL,
+      hence Mo cannot be turned into a gnu. In 2012 (after I wrote the game),
+      version 2 of the Mozilla Public Licence came out,
+      which can be converted to the GPL.</p>
+    <p>The <a href="https://en.wikipedia.org/wiki/Mozilla_(mascot)" target="_blank">mascot
+      for the Mozilla Foundation</a> is, unsurprisingly,
+      a Tyrannasaurus Rex inspired by Godzilla.
+      As this would be out of place in a zoo,
+      I decided to refer instead to Gecko,
+      the rendering engine used in Mozilla browsers
+      such as Firefox and SeaMonkey.</p>]
+  </li>
+</ul>]
+<p>(link-reveal: "The south end")[ contains the tank that houses Odi the Python.
+  You can do some recruiting here.(show: ?s)]</p>
+|s)[<ul>
+  <li>
+    <p>(link-reveal: "What do I have to do here?")[(show: ?doS)]</p>
+    |doS)[<p>Unlock the tank (with the right key).
+      Touch Odi then ask her to follow you.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Odi represent?")[(show: ?meanS)]</p>
+    |meanS)[<p>Odi represents the licence used by Python 2.1.1 and newer,
+      which can be converted to the GPL.
+      (The licence used by Python 1.6b1–2.0 and 2.1 specified a jurisdiction
+      and could not be converted to the GPL,
+      but we overlook that aberration.)</p>
+    <p>Before the Python programming language had its current
+      plus-shaped logo formed of two abstract snakes,
+      its logo was a cute cartoon snake called
+      <a href="https://web.archive.org/web/20030105154824/http://python.org/wiki/img/Odi.jpg" target="_blank">Odi</a>.</p>]
+  </li>
+</ul>]
+<p>When you've finished, exit west from the [[north end->Riverside]]
+  or the [[south end->Lakeside]].</p>
+}
+
+
+:: Lakeside
+{
+<p>Here you meet Tabby the Cat, asleep on a park bench.
+  After Affero, she is the easiest zoo resident to recruit.</p>
+<ul>
+  <li>
+    <p>(link-reveal: "How do I do that?")[(show: ?do)]</p>
+    |do)[<p>Well, she's asleep, so the very first thing you have to do
+      is wake her up. You can probably work out the rest.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Tabby represent?")[(show: ?mean)]</p>
+    |mean)[<p>Tabby represents the
+      <a href="https://en.wikipedia.org/wiki/File:Sleepycat_logo.svg" target="_blank">Sleepycat Software</a>
+      Product Licence,
+      known more generically as the Berkeley Database Licence,
+      which can be converted to the GPL.
+      The name is a vague play on tab-separated values
+      as a way of representing data.</p>]
+  </li>
+</ul>
+<p>After that, you can head back [[north->Riverside]],
+  east to the [[Reptile House]],
+  [[west->Storage Area]], or
+  [[south->Main Concourse]]</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Where should I go next?")[(show: ?go)]</p>
+    |go)[<p>If you have three or fewer gnus in your herd,
+      head back [[north->Riverside]] or [[east->Reptile House]].
+      If you have four, explore [[west->Storage Area]] then
+      [[south->Main Concourse]].</p>]
+  </li>
+</ul>
+}
+
+
+:: Storage Area
+{
+<p>There are exactly three things you have to do here.</p>
+<ol>
+  <li>
+    <p>Examine everything.</p>
+  </li>
+  <li>
+    <p>Establish whether you can catch Glenda the Rabbit,
+      but don't waste too many moves on it.</p>
+  </li>
+  <li>
+    <p>(link-reveal: "Guess what Glenda represents.")[(show: ?mean)]</p>
+    |mean)[<p>If you were thinking anything naughty, then shame on you.
+      <a href="https://en.wikipedia.org/wiki/File:Plan9bunnysmblack.jpg" target="_blank">Glenda</a>,
+      otherwise known as the Plan 9 bunny,
+      is the mascot of the Unix-like operating system Plan 9 from Bell Labs.
+      Here she represents the Lucent Public Licence,
+      used for Plan 9 in 2003;
+      it is a free software licence but since it specifies a jurisdiction
+      it cannot be converted to the GPL.</p>]
+  </li>
+</ol>
+<p>When you've had enough, head back [[east->Lakeside]].</p>
+}
+
+:: Main Concourse
+{
+<p>There's nothing to do here except enjoy the scenery.
+  You may have noticed the clock;
+  it was because of that that I added the time limit.
+  If you'd read the time and found it to be mid-morning,
+  you may well have started to wonder where everyone was
+  and why a keeper hadn't locked you back up.
+  So now if you run out of time, a keeper *does* lock you back up.</p>
+<p>You can go [[north->Lakeside]] again if you need to, otherwise go
+  west into the [[Aviary]] (you will need a key) or
+  through the archway to the [[east->Front Entrance]].</p>
+<ul>
+  <li>
+    <p>(link-reveal: "Where should I go next?")[(show: ?go)]</p>
+    |go)[<p>If you have five gnus in your herd, it's time to go [[east->Front Entrance]].
+      If you have four, go [[west->Aviary]].</p>]
+  </li>
+</ul>
+}
+
+
+:: Aviary
+{
+<p>There are three rooms in the Aviary: north, middle and south.
+  I recommend examining everything in all three rooms
+  before actually attempting to do anything.</p>
+<p>(link: "Done that?")[You will have found four birds:
+  Miron the Condor, the eagles Behlendorf and Striker,
+  and Sparky the Phoenix.
+  Only one of them can be recruited for your herd,
+  but you'll have to find a way to get that one to come nearer first.(show: ?q)]</p>
+|q)[<ul>
+  <li>
+    <p>(link-reveal: "How do I do that?")[(show: ?do)]</p>
+    |do)[<p>The trick is to throw something at the perches.
+      Now, there is a risk of losing whatever you throw,
+      so don't throw the keys if you haven't used them all.
+      Use the coal instead.</p>
+    <p>Also, do bear in mind that only one of the birds will leave their perch.
+      For a complete experience, keep pestering one of them
+      ((link: "which?")[Sparky])
+      and immediately undo when the entirely evitable havoc ensues.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Miron represent?")[(show: ?mean1)]</p>
+    |mean1)[<p><a href="http://research.cs.wisc.edu/htcondor/" target="_blank">Miron the Condor</a> represents,
+      unsurprisingly, the Condor Public Licence. This is a free software licence
+      but because it includes protection of the Condor brand
+      it cannot be converted to the GPL.
+      The name derives from Professor Miron Livny,
+      Director of the Center for High Throughput Computing at the University of Wisconsin-Madison,
+      who is named as a contact by the licence text.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What does Sparky represent?")[(show: ?mean2)]</p>
+    |mean2)[<p>This is so obscure, even I had trouble remembering, but my notes tell me
+      <a href="https://commons.wikimedia.org/wiki/File:Firebird_logo.svg" target="_blank">Sparky the Phoenix</a>
+      represents the Interbase Public Licence,
+      since it was used for the source code of the Firebird relational database.
+      Needless to say, due to various complications it cannot be turned into the GPL.
+      The name was probably a riff on SQL via SPARQL,
+      but I have since found out that Sparky the Phoenix is also
+      the mascot of the Moutohora Macaws Quidditch team.</p>
+    <p>It probably would have made more sense to use the logo of Interbase itself,
+      but for some reason I felt a hummingbird would be more out of place in a zoo
+      than a creature from ancient mythology.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "What do Behlendorf and Striker represent?")[(show: ?mean3)]</p>
+    |mean3)[<p>The patchy eagles represent different versions of the Apache Licence,
+      on the basis that the icon of the <a href="http://apache.org/" target="_blank">Apache Software Foundation</a>
+      is a colourful eagle feather.</p>
+    <p>Behlendorf, on the lower perch, represents version 1 of the licence,
+      which cannot be converted into the GPL.
+      He is named after Brian Behlendorf, one of the founders of Apache.</p>
+    <p>Striker, on the higher perch, represents version 2 of the licence,
+      which can be converted into the GPL.
+      He is named after Sander Striker, who was Director of the Board
+      of the Apache Software Foundation when the version 2 licence was released,
+      and its Executive Vice President when this game was written.</p>]
+  </li>
+</ul>]
+<p>You can exit [[east->Main Concourse]] from either end.</p>
+}
+
+
+:: Front Entrance
+{
+<p>This looks promising, doesn't it?
+  Do you have everything you need to escape?</p>
+<ul>
+  <li>
+    <p>(link-reveal: "No")[(show: ?no)]</p>
+    |no)[<p>You'll need to go back [[west->Main Concourse]] and get more help.</p>]
+  </li>
+  <li>
+    <p>(link-reveal: "Yes")[(show: ?yes)]</p>
+    |yes)[<p>Ah, well, congratulations are in order.
+      I hope you enjoyed the game!
+      If you followed this walkthrough all the way through you should have full marks,
+      but in case you missed any, here's how they break down:</p>
+    <ol>
+      <li>Recruiting Affero to your herd</li>
+      <li>Unlocking Tex's enclosure</li>
+      <li>Unlocking Vincent's enclosure</li>
+      <li>Unlocking Beastie's enclosure</li>
+      <li>Recruiting Beastie to your herd</li>
+      <li>Unlocking Mo's tank</li>
+      <li>Unlocking Odi's tank</li>
+      <li>Recruiting Odi to your herd</li>
+      <li>Recruiting Tabby to your herd</li>
+      <li>Unlocking the Aviary</li>
+      <li>Recruiting Striker to your herd</li>
+      <li>Escaping within four game hours</li>
+    </ol>
+    <p>If you can stand to play the game again, here's a challenge for you:
+      can you win the game with a score of only 4?</p>]
+  </li>
+</ul>
+}
+
+
+:: Index
+{
+* [[Your Stall]]
+* [[Affero's Stall]]
+* [[Gnu Enclosure Entrance]]
+* [[Riverside]]
+* [[Elephant Enclosure]]
+* [[Lion Enclosure]]
+* [[Devil Enclosure]]
+* [[Reptile House]]
+* [[Lakeside]]
+* [[Storage Area]]
+* [[Main Concourse]]
+* [[Aviary]]
+* [[Front Entrance]]
+}
+
+
+:: footer [footer]
+{
+<hr>
+<p><small>[[Index]] |
+  (if: (history:)'s length > 0)[(link:"Restart")[(reload:)] |]
+  <a href='http://alexball.me.uk/if/gnu/' target='_blank'>Revisit game</a></small></p>
+}
